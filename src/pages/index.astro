@@ -4,18 +4,30 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Crystal Ridge KCK">
   <main class="container relative p-0">
-    <article class="container isolate grid gap-0 p-0 overflow-hidden">
+    <article
+      class:list={[
+        "container isolate grid gap-0 p-0 min-h-[350px] overflow-hidden",
+        "lg:grid-cols-[65%_auto]",
+        "lg:shadow-none lg:overflow-visible",
+      ]}
+    >
       <img
         id="main-image"
         src="/front-entrance.jpeg"
         alt="front entrance"
-        class="inset-0 -z-10 h-full object-cover"
+        class:list={["inset-0 -z-10 h-full object-cover", "lg:rounded"]}
       />
-      <div class="p-4 bg-white max-w-none">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor,
-        molestias at labore minima, aspernatur reprehenderit obcaecati, magnam
-        atque ratione illum dolorem cupiditate eum. Odio, itaque. Perferendis,
-        vero voluptate. Inventore, id.
+      <div>
+        <div
+          class="p-4 bg-white lg:-translate-x-16 lg:translate-y-16 lg:rounded lg:shadow-lg"
+        >
+          Exciting changes coming to your neighborhood! Based off of the
+          orininal Home Owners Association from 2004, Crystal Ridge Residential
+          Homes Association Inc. is fresh start for northern Kansas City. We'd
+          love for you to join us! Stay up to date with current events,
+          subscribe to our newsletter, and learn about our history. If we all
+          work together, there's nothing we can't do.
+        </div>
       </div>
     </article>
   </main>
