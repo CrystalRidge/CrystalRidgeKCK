@@ -8,6 +8,7 @@ module.exports = {
         sm: "768px",
         lg: "992px",
         xl: "1200px",
+        "max-sm": { max: "768px" },
       },
     },
   },

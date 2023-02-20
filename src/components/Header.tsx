@@ -17,7 +17,7 @@ export function Header() {
     </li>
   ));
   return (
-    <nav className="px-4">
+    <nav className="px-4 relative">
       <ul>
         <li>
           <a href="/">
@@ -27,7 +27,7 @@ export function Header() {
       </ul>
       <button
         className={clsx(
-          "w-fit focus:shadow-none hamburger hamburger--collapse",
+          "sm:hidden w-fit focus:shadow-none hamburger hamburger--collapse",
           {
             "is-active": isActive,
           }
@@ -39,7 +39,15 @@ export function Header() {
           <span className="hamburger-inner"></span>
         </span>
       </button>
-      {isActive && <ul>{links}</ul>}
+      <ul
+        className={clsx([
+          { "max-sm:hidden": !isActive },
+          "max-sm:absolute max-sm:flex max-sm:flex-col max-sm:w-full",
+          "max-sm:left-0 max-sm:top-full max-sm:bg-white max-sm:z-10",
+        ])}
+      >
+        {links}
+      </ul>
     </nav>
   );
 }
