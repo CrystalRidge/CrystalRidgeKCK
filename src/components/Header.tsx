@@ -121,9 +121,12 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
     <Header height={HEADER_HEIGHT} mb={120} className={classes.root}>
       <Container className={classes.header}>
         <a href="/">
-          <img src="/favicon.svg" alt="logo" id="logo" />
+          <img
+            src="/full-logo.svg"
+            alt="logo"
+            className="[--width:calc(var(--font-size)_*_4)] w-[var(--width)] min-w-[var(--width)]"
+          />
         </a>
-        {/* <MantineLogo size={28} /> */}
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
