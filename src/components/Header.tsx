@@ -17,7 +17,7 @@ export function Header() {
     </li>
   ));
   return (
-    <nav className="px-4 relative">
+    <nav className="px-4 relative bg-white z-10">
       <ul>
         <li>
           <a href="/">
