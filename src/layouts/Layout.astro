@@ -1,6 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import { HeaderResponsive } from "../components/Header2";
 
 export interface Props {
   title: string;
@@ -22,8 +22,15 @@ const { title } = Astro.props;
     />
     <title>{title}</title>
   </head>
-  <Header />
-  <body class="relative">
+  <HeaderResponsive
+    client:load
+    links={[
+      { label: "Roadmap", link: "./roadmap" },
+      { label: "Gallery", link: "./gallery" },
+      { label: "About Us", link: "./about-us" },
+    ]}
+  />
+  <body class="relative text-sm">
     <slot />
   </body>
   <Footer />
