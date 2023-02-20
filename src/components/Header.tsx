@@ -3,6 +3,19 @@ import { useState } from "react";
 
 export function Header() {
   const [isActive, setIsActive] = useState(false);
+
+  const links = [
+    { name: "Home", href: "/" },
+    { name: "Roadmap", href: "/roadmap" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "About Us", href: "/about-us" },
+  ].map(({ name, href }) => (
+    <li>
+      <a href={href} className="whitespace-nowrap">
+        {name}
+      </a>
+    </li>
+  ));
   return (
     <nav className="px-4">
       <ul>
@@ -13,9 +26,12 @@ export function Header() {
         </li>
       </ul>
       <button
-        className={clsx("w-fit hamburger hamburger--collapse", {
-          "is-active": isActive,
-        })}
+        className={clsx(
+          "w-fit focus:shadow-none hamburger hamburger--collapse",
+          {
+            "is-active": isActive,
+          }
+        )}
         onClick={() => setIsActive((isActive) => !isActive)}
         type="button"
       >
@@ -23,28 +39,7 @@ export function Header() {
           <span className="hamburger-inner"></span>
         </span>
       </button>
-      <ul>
-        <li>
-          <a href="/" className="whitespace-nowrap">
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="/roadmap" className="whitespace-nowrap">
-            Roadmap
-          </a>
-        </li>
-        <li>
-          <a href="/gallery" className="whitespace-nowrap">
-            Gallery
-          </a>
-        </li>
-        <li>
-          <a href="/about-us" className="whitespace-nowrap">
-            About Us
-          </a>
-        </li>
-      </ul>
+      {isActive && <ul>{links}</ul>}
     </nav>
   );
 }
