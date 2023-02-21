@@ -10,7 +10,7 @@ export function Header() {
     { name: "Gallery", href: "/gallery" },
     { name: "About Us", href: "/about-us" },
   ].map(({ name, href }) => (
-    <li className="w-full h-full p-0" key={name}>
+    <li className="max-sm:w-full max-sm:h-full max-sm:p-0" key={name}>
       <a
         href={href}
         className="whitespace-nowrap max-sm:w-full max-sm:h-full max-sm:px-2 max-sm:py-4 max-sm:text-center max-sm:m-0 max-sm:rounded-none"
