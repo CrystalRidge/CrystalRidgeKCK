@@ -1,7 +1,9 @@
-$hamburger-padding-x: 15px;
-$hamburger-padding-y: 15px;
-$hamburger-layer-width: 40px;
-$hamburger-layer-height: 4px;
-$hamburger-layer-spacing: 6px;
+$hamburger-padding-x: 0.2rem;
+$hamburger-padding-y: 0.2rem;
+$hamburger-layer-width: 2rem;
+$hamburger-layer-height: 0.2rem;
+$hamburger-layer-spacing: 0.4rem;
+
+$hamburger-types: (squeeze);
 
 @import "hamburgers";
