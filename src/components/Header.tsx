@@ -10,7 +10,7 @@ export function Header() {
     { name: "Gallery", href: "/gallery" },
     { name: "About Us", href: "/about-us" },
   ].map(({ name, href }) => (
-    <li>
+    <li key={name}>
       <a href={href} className="whitespace-nowrap">
         {name}
       </a>
@@ -27,7 +27,7 @@ export function Header() {
       </ul>
       <button
         className={clsx(
-          "sm:hidden w-fit focus:shadow-none hamburger hamburger--collapse",
+          "sm:!hidden w-fit focus:shadow-none hamburger hamburger--collapse",
           {
             "is-active": isActive,
           }
