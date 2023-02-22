@@ -3,11 +3,12 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Crystal Ridge KCK">
-  <main class="container relative p-5">
+  <main class="container p-5">
+    <h2 class="mb-6 text-2xl">Get Involved in Our Community</h2>
     <article
       class:list={[
-        "container isolate grid gap-0 p-0 min-h-[350px] overflow-hidden",
-        "sm:grid-cols-[65%_auto]",
+        "container isolate grid gap-4 p-0 min-h-[350px] overflow-hidden",
+        "sm:grid-cols-[50%_auto]",
         "sm:shadow-none sm:overflow-visible",
       ]}
     >
@@ -18,14 +19,22 @@ import Layout from "../layouts/Layout.astro";
         class:list={["inset-0 -z-10 h-full object-cover", "sm:rounded"]}
       />
       <div>
-        <div
-          class="p-4 bg-white sm:-translate-x-16 sm:translate-y-10 sm:rounded sm:shadow-lg sm:absolute sm:bottom-0"
-        >
-          Exciting changes are coming! <br /><br /> Crystal Ridge Residential Homes
-          Association Inc. isn't just a Home Owners Association, it's a fresh start
-          for the neighborhood. Join our newsletter, learn how we're spending funds,
-          participate in community events, make new friends, and help make our community
-          a safe, fun and inviting place to live.
+        <div class="p-4 bg-white sm:rounded">
+          <h3 class="text-xl mb-4">Welcome to our HOA!</h3>
+          <p>
+            <span class="w-8 inline-block"></span>
+            We're dedicated to making our neighborhood the best it can be. Whether
+            you're new to the area or have lived here for years, we want to make
+            sure you're up-to-date on all the exciting changes happening in our community.
+          </p>
+          <br />
+          <p>
+            <span class="w-8 inline-block"></span>
+            We're working hard to get the clubhouse feeling like new, maintain our
+            roads and common areas, and make our neighborhood a safe and enjoyable
+            place to live. We believe that everyone can play a role in building a
+            stronger community, and we would love to have you join us.
+          </p>
         </div>
       </div>
     </article>
