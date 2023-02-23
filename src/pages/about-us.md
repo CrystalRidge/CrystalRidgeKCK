@@ -7,7 +7,7 @@ title: About Us
 
 ### Board Members
 
-<div class="flex">
+<div class="flex max-sm:flex-col gap-2">
 <div>
 
 #### Board Positions
