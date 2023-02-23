@@ -3,45 +3,42 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Crystal Ridge KCK">
-  <main class="container p-5">
-    <h2 class="mb-6 text-2xl">Get Involved in Our Community</h2>
-    <article
-      class:list={[
-        "container isolate grid gap-4 p-0 min-h-[350px] overflow-hidden",
-        "sm:grid-cols-[50%_auto]",
-        "sm:shadow-none sm:overflow-visible",
-      ]}
-    >
-      <img
-        id="main-image"
-        src="/front-entrance.jpeg"
-        alt="front entrance"
-        class:list={["inset-0 -z-10 h-full object-cover", "sm:rounded"]}
-      />
-      <div>
-        <div class="p-4 bg-white sm:rounded">
-          <h3 class="text-xl mb-4">Welcome to our HOA!</h3>
-          <p>
-            <span class="w-8 inline-block"></span>
-            We're dedicated to making our neighborhood the best it can be. Whether
-            you're new to the area or have lived here for years, we want to make
-            sure you're up-to-date on all the exciting changes happening in our community.
-          </p>
-          <br />
-          <p>
-            <span class="w-8 inline-block"></span>
-            We're working hard to get the clubhouse feeling like new, maintain our
-            roads and common areas, and make our neighborhood a safe and enjoyable
-            place to live. We believe that everyone can play a role in building a
-            stronger community, and we would love to have you join us.
-          </p>
-        </div>
+  <h2 class="mb-6 text-2xl">Get Involved in Our Community</h2>
+  <article
+    class:list={[
+      "container isolate grid gap-4 p-0 min-h-[350px] overflow-hidden",
+      "sm:grid-cols-[50%_auto]",
+      "sm:shadow-none sm:overflow-visible",
+    ]}
+  >
+    <img
+      id="main-image"
+      src="/front-entrance.jpeg"
+      alt="front entrance"
+      class:list={["inset-0 -z-10 h-full object-cover", "sm:rounded"]}
+    />
+    <div>
+      <div class="p-4 bg-white sm:rounded">
+        <h3>Welcome to our HOA!</h3>
+        <p>
+          <span class="w-8 inline-block"></span>
+          We're dedicated to making our neighborhood the best it can be. Whether
+          you're new to the area or have lived here for years, we want to make sure
+          you're up-to-date on all the exciting changes happening in our community.
+        </p>
+        <p>
+          <span class="w-8 inline-block"></span>
+          We're working hard to get the clubhouse feeling like new, maintain our
+          roads and common areas, and make our neighborhood a safe and enjoyable
+          place to live. We believe that everyone can play a role in building a stronger
+          community, and we would love to have you join us.
+        </p>
       </div>
-    </article>
-    <a
-      class="py-4 mt-8 w-fit ml-auto block"
-      href="https://www.facebook.com/groups/319718186605123/"
-      ><img src="/FindUs-FB-RGB.svg" class="h-8" alt="Find us on Facebook" /></a
-    >
-  </main>
+    </div>
+  </article>
+  <a
+    class="py-4 mt-8 mx-auto pb-0 w-fit ml-auto block"
+    href="https://www.facebook.com/groups/319718186605123/"
+    ><img src="/FindUs-FB-RGB.svg" class="h-8" alt="Find us on Facebook" /></a
+  >
 </Layout>
