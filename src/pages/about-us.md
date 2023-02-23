@@ -3,12 +3,32 @@ layout: ../layouts/ContentfulLayout.astro
 title: About Us
 ---
 
+### Our History
+
 ### Board Members
 
-President – Phillip Wills
+<div class="flex">
+<div>
 
-Treasurer – Rob Bauer
+#### Board Positions
 
+President – Phillip Wills  
+Treasurer – Rob Bauer  
 Secretary – Emily Wills
 
 _Office Positions are on 1 year terms and are determined by the board. Also officers can be removed by 2/3 vote of the board._
+
+</div>
+<div>
+
+#### Board Member Information
+
+- 15 Total Board Members with some positions still available
+- 4 Single Family Home Members – 2 out of 4 slots filled
+- 5 Duplex Members – 5 out of 5 slots filled
+- 6 Town Home Members – 4 out of 6 slots filled
+
+_Board members are on 3 year terms with a rolling board so every 3 years a different 5 members are up for re-election_
+
+</div>
+</div>
