@@ -3,7 +3,12 @@ import { useEffect, useState } from "react";
 import clsx from "clsx";
 
 interface TimelineProps {
-  items: { title: string; content: string }[];
+  items: {
+    date: string;
+    title: string;
+    description?: string;
+    inProgress?: boolean;
+  }[];
 }
 
 export function Timeline({ items }: TimelineProps) {
@@ -13,10 +18,15 @@ export function Timeline({ items }: TimelineProps) {
 
   return (
     <div className={clsx(!isClientLoaded && "hidden")}>
-      <MantineTimeline active={2}>
-        {items.map(({ title, content }) => (
-          <MantineTimeline.Item key={title} title={title}>
-            {content}
+      <MantineTimeline
+        active={items.filter(({ inProgress }) => !inProgress).length - 1}
+      >
+        {items.map(({ date, title, description }) => (
+          <MantineTimeline.Item title={title} className="text-lg" key={title}>
+            <div className="flex flex-col text-sm">
+              {description && <div className="max-w-xl">{description}</div>}
+              <i className="font-light">{date}</i>
+            </div>
           </MantineTimeline.Item>
         ))}
       </MantineTimeline>
