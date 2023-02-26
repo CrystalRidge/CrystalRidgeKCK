@@ -9,15 +9,16 @@ interface TimelineProps {
     description?: string;
     inProgress?: boolean;
   }[];
+  classname: string;
 }
 
-export function Timeline({ items }: TimelineProps) {
+export function Timeline({ items, classname }: TimelineProps) {
   const [isClientLoaded, setIsClientLoaded] = useState<boolean>(false);
 
   useEffect(() => setIsClientLoaded(true));
 
   return (
-    <div className={clsx(!isClientLoaded && "hidden")}>
+    <div className={clsx(!isClientLoaded && "hidden", classname)}>
       <MantineTimeline
         active={items.filter(({ inProgress }) => !inProgress).length - 1}
       >
