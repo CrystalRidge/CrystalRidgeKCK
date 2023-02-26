@@ -1,8 +1,13 @@
 import clsx from "clsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function Header() {
   const [isActive, setIsActive] = useState(false);
+  const [pathname, setPathname] = useState<string>();
+
+  useEffect(() => {
+    setPathname(window.location.pathname);
+  }, []);
 
   const links = [
     { name: "Home", href: "/" },
@@ -13,7 +18,10 @@ export function Header() {
     <li className="max-sm:w-full max-sm:h-full max-sm:p-0" key={name}>
       <a
         href={href}
-        className="whitespace-nowrap max-sm:w-full max-sm:h-full max-sm:px-2 max-sm:py-4 max-sm:text-center max-sm:m-0 max-sm:rounded-none"
+        className={clsx(
+          pathname === href && "underline hover:underline",
+          "whitespace-nowrap max-sm:w-full max-sm:h-full max-sm:px-2 max-sm:py-4 max-sm:text-center max-sm:m-0 max-sm:rounded-none"
+        )}
       >
         {name}
       </a>
