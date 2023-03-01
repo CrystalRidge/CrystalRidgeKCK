@@ -11,7 +11,7 @@ const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html data-theme="light" lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -36,7 +36,10 @@ const { title } = Astro.props;
     body {
       min-height: 100vh;
       min-height: 100svh;
+      color: #333333;
+      background-color: #f5f5f5;
     }
+
     #logo {
       --logo-width: calc(var(--font-size) * 13);
       width: var(--logo-width);
