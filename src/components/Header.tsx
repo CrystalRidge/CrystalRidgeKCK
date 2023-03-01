@@ -32,7 +32,7 @@ export function Header() {
       <ul>
         <li>
           <a href="/">
-            <img src="/favicon.svg" alt="logo" id="logo" />
+            <img src="/full-logo.svg" alt="logo" id="logo" />
           </a>
         </li>
       </ul>
