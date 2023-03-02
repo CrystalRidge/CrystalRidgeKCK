@@ -19,7 +19,7 @@ export function Header() {
       <a
         href={href}
         className={clsx(
-          pathname === href ? "opacity-100 hover:opacity-100" : "opacity-70",
+          pathname === href ? "text-blue-600" : "text-gray-600",
           "font-semibold whitespace-nowrap max-sm:w-full max-sm:h-full max-sm:px-2 max-sm:py-4 max-sm:text-center max-sm:m-0 max-sm:rounded-none"
         )}
       >
@@ -28,7 +28,7 @@ export function Header() {
     </li>
   ));
   return (
-    <nav className="px-4 relative bg-white z-10 shadow-sm">
+    <nav className="px-10 relative bg-white z-10 shadow-sm">
       <ul>
         <li>
           <a href="/">
