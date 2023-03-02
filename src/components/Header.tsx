@@ -20,7 +20,7 @@ export function Header() {
         href={href}
         className={clsx(
           pathname === href ? "opacity-100 hover:opacity-100" : "opacity-70",
-          "font-bold whitespace-nowrap max-sm:w-full max-sm:h-full max-sm:px-2 max-sm:py-4 max-sm:text-center max-sm:m-0 max-sm:rounded-none"
+          "font-semibold whitespace-nowrap max-sm:w-full max-sm:h-full max-sm:px-2 max-sm:py-4 max-sm:text-center max-sm:m-0 max-sm:rounded-none"
         )}
       >
         {name}
