@@ -1,22 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Unchecked from "../components/UncheckedIcon.astro";
+import Checked from "../components/CheckedIcon.astro";
 
 const items = [
   {
     name: "Re-Installing Stop Signs and poles",
-    completed: false,
+    completed: true,
   },
   {
     name: "Mailbox installed at clubhouse",
-    completed: false,
+    completed: true,
   },
   {
     name: "Deeds for Clubhouse, Common Grounds & Streets be turned over to HOA",
-    completed: false,
+    completed: true,
   },
   {
     name: "Restoring Power to the clubhouse. Turning on Exterior lights for safety and security",
-    completed: false,
+    completed: true,
   },
   {
     name: "Have lawns mowed and fertilized for the common areas, clubhouse grounds and front entrance sign",
@@ -24,11 +26,11 @@ const items = [
   },
   {
     name: "Paying for insurance for properties and common grounds",
-    completed: false,
+    completed: true,
   },
   {
     name: "Fixing ramp at clubhouse",
-    completed: false,
+    completed: true,
   },
   {
     name: "Front entrance road repaired along with potholes",
@@ -69,4 +71,16 @@ const items = [
 ];
 ---
 
-<Layout title="Roadmap" />
+<Layout title="Roadmap">
+  <h2 class="mb-6 text-2xl">Come lend a hand!</h2>
+  <div class="grid grid-cols-[auto_1fr] gap-1">
+    {
+      items.map(({ completed, name }) => (
+        <>
+          {completed ? <Checked /> : <Unchecked />}
+          {name}
+        </>
+      ))
+    }
+  </div>
+</Layout>
