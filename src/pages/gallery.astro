@@ -1,5 +1,8 @@
 ---
+import { Carousel } from "../components/Carousel";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Gallery" />
+<Layout title="Gallery">
+  <Carousel imageUrls={["/photos/clubhouse-diagonal.jpeg"]} />
+</Layout>

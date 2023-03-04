@@ -1,23 +1,27 @@
-import { Carousel } from "@mantine/carousel";
-import { Image, rem } from "@mantine/core";
+import { Carousel as MantineCarousel } from "@mantine/carousel";
+import { Image } from "@mantine/core";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
-export default function (imageUrls: string[]) {
+interface Carousel {
+  imageUrls: string[];
+}
+
+export function Carousel({ imageUrls }: Carousel) {
   const autoplay = useRef(Autoplay({ delay: 2000 }));
   return (
-    <Carousel
+    <MantineCarousel
       maw={320}
       mx="auto"
       withIndicators
       styles={{
         indicator: {
-          width: rem(12),
-          height: rem(4),
+          width: "12rem",
+          height: "4rem",
           transition: "width 250ms ease",
 
           "&[data-active]": {
-            width: rem(40),
+            width: "rem40",
           },
         },
         control: {
@@ -32,10 +36,10 @@ export default function (imageUrls: string[]) {
       onMouseLeave={autoplay.current.reset}
     >
       {imageUrls.map((url) => (
-        <Carousel.Slide key={url}>
+        <MantineCarousel.Slide key={url}>
           <Image src={url} />
-        </Carousel.Slide>
+        </MantineCarousel.Slide>
       ))}
-    </Carousel>
+    </MantineCarousel>
   );
 }

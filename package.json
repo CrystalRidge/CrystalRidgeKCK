@@ -26,6 +26,7 @@
     "@mantine/carousel": "^5.10.4",
     "@mantine/core": "^5.10.4",
     "@mantine/hooks": "^5.10.4",
+    "@picocss/pico": "^1.5.7",
     "embla-carousel-autoplay": "^7.0.9",
     "embla-carousel-react": "^7.0.9",
     "prettier": "^2.8.4",
