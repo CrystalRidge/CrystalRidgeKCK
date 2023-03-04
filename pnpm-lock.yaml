@@ -12,6 +12,7 @@ specifiers:
   '@types/react-dom': ^18.0.6
   astro: ^2.0.4
   clsx: ^1.2.1
+  embla-carousel-autoplay: ^7.0.9
   embla-carousel-react: ^7.0.9
   prettier: ^2.8.4
   prettier-plugin-astro: ^0.8.0
@@ -38,6 +39,7 @@ devDependencies:
   '@mantine/carousel': 5.10.4_vnm3gwkgebougyg6u4olvdu7wu
   '@mantine/core': 5.10.4_xgfpbscinl7gpxk3zixgsno7yu
   '@mantine/hooks': 5.10.4_react@18.2.0
+  embla-carousel-autoplay: 7.0.9
   embla-carousel-react: 7.0.9_react@18.2.0
   prettier: 2.8.4
   prettier-plugin-astro: 0.8.0
@@ -1735,6 +1737,12 @@ packages:
   /electron-to-chromium/1.4.302:
     resolution: {integrity: sha512-Uk7C+7aPBryUR1Fwvk9VmipBcN9fVsqBO57jV2ZjTm+IZ6BMNqu7EDVEg2HxCNufk6QcWlFsBkhQyQroB2VWKw==}
     dev: false
+
+  /embla-carousel-autoplay/7.0.9:
+    resolution: {integrity: sha512-I8LhZ5iAyu8L3qoYgOgjnpHK5mv6c1w5a7IcT6Et24BqGf8D+yFWfI28ctz9YvrqH1QbyUezy5LfuaeGaqfclw==}
+    peerDependencies:
+      embla-carousel: 7.0.9
+    dev: true
 
   /embla-carousel-react/7.0.9_react@18.2.0:
     resolution: {integrity: sha512-KGnnZWukN+N2H6VjQf6C9mWmInqtCIiInhkGsJ9ckxri3m3Ks6wRDz+RRlV1kcuPHtRoxyFuBBGNwftWqMO9Pw==}
