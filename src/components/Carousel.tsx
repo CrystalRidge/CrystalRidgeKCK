@@ -41,6 +41,7 @@ export function Carousel({ imageUrls }: Carousel) {
       plugins={[autoplay.current]}
       onMouseEnter={autoplay.current.stop}
       onMouseLeave={autoplay.current.reset}
+      loop
     >
       {imageUrls.map((url) => (
         <MantineCarousel.Slide key={url}>
