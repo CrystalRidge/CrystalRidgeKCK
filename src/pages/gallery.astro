@@ -4,5 +4,13 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Gallery">
-  <Carousel imageUrls={["/photos/clubhouse-diagonal.jpeg"]} />
+  <Carousel
+    client:load
+    imageUrls={[
+      "/photos/clubhouse-diagonal.jpeg",
+      "/photos/front-entrance.jpeg",
+      "/photos/lighted-up-side.jpeg",
+      "/photos/neighborhood-entrance-scaled.jpeg",
+    ]}
+  />
 </Layout>
