@@ -10,38 +10,36 @@ interface Carousel {
 export function Carousel({ imageUrls }: Carousel) {
   const autoplay = useRef(Autoplay({ delay: 2000 }));
   return (
-    <div className="disable-pico">
-      <MantineCarousel
-        maw={320}
-        mx="auto"
-        withIndicators
-        styles={{
-          indicator: {
-            width: "12rem",
-            height: "4rem",
-            transition: "width 250ms ease",
+    <MantineCarousel
+      maw={320}
+      mx="auto"
+      withIndicators
+      styles={{
+        indicator: {
+          width: "12rem",
+          height: "4rem",
+          transition: "width 250ms ease",
 
-            "&[data-active]": {
-              width: "rem40",
-            },
+          "&[data-active]": {
+            width: "rem40",
           },
-          control: {
-            "&[data-inactive]": {
-              opacity: 0,
-              cursor: "default",
-            },
+        },
+        control: {
+          "&[data-inactive]": {
+            opacity: 0,
+            cursor: "default",
           },
-        }}
-        plugins={[autoplay.current]}
-        onMouseEnter={autoplay.current.stop}
-        onMouseLeave={autoplay.current.reset}
-      >
-        {imageUrls.map((url) => (
-          <MantineCarousel.Slide key={url}>
-            <Image src={url} />
-          </MantineCarousel.Slide>
-        ))}
-      </MantineCarousel>
-    </div>
+        },
+      }}
+      plugins={[autoplay.current]}
+      onMouseEnter={autoplay.current.stop}
+      onMouseLeave={autoplay.current.reset}
+    >
+      {imageUrls.map((url) => (
+        <MantineCarousel.Slide key={url}>
+          <Image src={url} />
+        </MantineCarousel.Slide>
+      ))}
+    </MantineCarousel>
   );
 }
