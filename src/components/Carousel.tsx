@@ -1,5 +1,5 @@
 import { Carousel as MantineCarousel } from "@mantine/carousel";
-import { Image, rem } from "@mantine/core";
+import { Image, rem, getStylesRef } from "@mantine/core";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
@@ -8,7 +8,7 @@ interface Carousel {
 }
 
 export function Carousel({ imageUrls }: Carousel) {
-  const autoplay = useRef(Autoplay({ delay: 2000 }));
+  const autoplay = useRef(Autoplay({ delay: 5000 }));
   return (
     <MantineCarousel
       maw={500}
@@ -16,13 +16,12 @@ export function Carousel({ imageUrls }: Carousel) {
       withIndicators
       styles={{
         indicator: {
-          width: rem(12),
-          height: rem(4),
-          transition: "width 250ms ease",
-
-          "&[data-active]": {
-            width: rem(40),
-          },
+          display: "none",
+        },
+        controls: {
+          ref: getStylesRef("controls"),
+          transition: "opacity 150ms ease",
+          opacity: 0,
         },
         control: {
           width: rem(4),
@@ -36,6 +35,13 @@ export function Carousel({ imageUrls }: Carousel) {
         },
         viewport: {
           backgroundColor: "black",
+        },
+        root: {
+          "&:hover": {
+            [`& .${getStylesRef("controls")}`]: {
+              opacity: 1,
+            },
+          },
         },
       }}
       plugins={[autoplay.current]}
