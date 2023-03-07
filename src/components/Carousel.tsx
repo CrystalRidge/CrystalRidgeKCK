@@ -8,7 +8,7 @@ interface Carousel {
 }
 
 export function Carousel({ imageUrls }: Carousel) {
-  const autoplay = useRef(Autoplay({ delay: 5000 }));
+  const autoplay = useRef(Autoplay({ delay: 4000 }));
   return (
     <MantineCarousel
       maw={500}
