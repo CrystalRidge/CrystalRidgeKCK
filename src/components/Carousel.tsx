@@ -16,7 +16,8 @@ export function Carousel({ imageUrls }: Carousel) {
       withIndicators
       styles={{
         indicator: {
-          display: "none",
+          width: "0.6rem",
+          height: "0.6rem",
         },
         controls: {
           ref: getStylesRef("controls"),
