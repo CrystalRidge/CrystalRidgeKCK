@@ -13,6 +13,7 @@ export function Header() {
     { name: "Home", href: "/" },
     { name: "Roadmap", href: "/roadmap" },
     { name: "Gallery", href: "/gallery" },
+    { name: "Resources", href: "/resources" },
     { name: "About", href: "/about" },
   ].map(({ name, href }) => (
     <li className="max-sm:w-full max-sm:h-full max-sm:p-0" key={name}>
