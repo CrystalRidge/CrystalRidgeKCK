@@ -12,7 +12,11 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ matchVariant }) {
+      matchVariant("max", (value) => `@media (max-width: ${value})`);
+    }),
+  ],
   corePlugins: {
     preflight: false,
   },
