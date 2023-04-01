@@ -1,0 +1,100 @@
+---
+import ExternalLinkIcon from "../components/ExternalLinkIcon.astro";
+import MailIcon from "../components/MailIcon.astro";
+import { Timeline } from "../components/Timeline";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="About">
+  <h2>Meet the neighborhood!</h2>
+  <p>
+    Consisting of 140 homes, Crystal Ridge Residential Homes Association is a
+    diverse and strengthening community. We have a mix of homeowners and rental
+    properties in the neighborhood.
+  </p>
+  <ul>
+    <li>
+      Bieber CO - <a href="mailto:amybiebergroup@gmail.com"><MailIcon /></a>
+    </li>
+    <li>
+      North Terrace - <a href="https://northterrace.com/"
+        ><ExternalLinkIcon /></a
+      >
+    </li>
+    <li>
+      Wesley Property Management - <a href="https://www.wesleyproperties.com/"
+        ><ExternalLinkIcon /></a
+      >
+    </li>
+    <li>57th Domino</li>
+    <li>Belmont Holdings LLC</li>
+  </ul>
+  <p>
+    Live in the neighborhood? Join our Facebook group, <a
+      href="https://www.facebook.com/groups/319718186605123/"
+      >Crystal Ridge KCK</a
+    >.
+  </p>
+  <h2>Our History</h2>
+  <Timeline
+    client:load
+    items={[
+      {
+        title: "Development begins",
+        description:
+          "Original developers plan to run the HOA until 2013, or until 75% of development is completed and homes are occupied, when it is to be turned over to the propery owners",
+        date: "2004",
+      },
+      { title: "Clubhouse and pool constructed", date: "2005" },
+      {
+        title: "Original developer files bankruptcy",
+        description:
+          "Although plans were made, the HOA has yet to be implemented. Unsold lots, common grounds, clubhouse, and the front entrance ownership returned to the bank",
+        date: "2009",
+      },
+      {
+        title: "New developer buys property",
+        description:
+          "Major purchase includes remaining lots, common grounds and clubhouse",
+        date: "2019",
+      },
+      {
+        title: "Ownership of the HOA is transferred to the property owners",
+        description:
+          "Tenants with proxy forms from their property owner can vote on their behalf",
+        date: "2022",
+      },
+      {
+        title: "Community resources gifted back to the HOA",
+        description:
+          "Common grounds, clubhouse, pool, and streets are gifted and deeded over to the HOA",
+        date: "2023",
+      },
+      {
+        title: "Repairs made to clubhouse and shared amenities",
+        date: "2023 - Present",
+        inProgress: true,
+      },
+    ]}
+  />
+  <h2>Board Members</h2>
+  <ul>
+    <li>President - Phillip Wills</li>
+    <li>Treasurer - Rob Bauer</li>
+    <li>Secretary - Emily Wills</li>
+  </ul>
+  <i
+    >Office Positions are on 1 year terms and are determined by the board. Also
+    officers can be removed by 2/3 vote of the board.</i
+  >
+  The board has 15 members. We still have not filled all positions. If you would
+  like to join the board, email us at <a href="mailto:CrystalRidgeKCK@gmail.com"
+    >CrystalRidgeKCK@gmail.com</a
+  >. The board is composed as follows:
+  <br /><br />
+  <ul>
+    <li>4 Single Family Home Members - 2 out of 4 slots filled</li>
+    <li>5 Duplex Members - 5 out of 5 slots filled</li>
+    <li>6 Town Home Members - 4 out of 6 slots filled</li>
+  </ul>
+</Layout>
