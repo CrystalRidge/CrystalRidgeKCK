@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "pnpm build && vercel deploy --prebuilt"
+    "deploy": "pnpm build && vercel"
   },
   "dependencies": {
     "@astrojs/react": "^2.0.2",
