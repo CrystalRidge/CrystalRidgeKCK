@@ -1,7 +1,7 @@
-import type { Config } from "tailwindcss";
-import plugin from "tailwindcss/plugin";
+const plugin = require("tailwindcss/plugin");
 
-export default {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
@@ -22,4 +22,4 @@ export default {
   corePlugins: {
     preflight: false,
   },
-} satisfies Config;
+};

@@ -1,0 +1,71 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const votes = [
+  "Dues where decided to set at $35 dollars if paying monthly per property address or $360 dollars per property address if paying yearly. Incentives money saving to pay yearly.",
+  "First monthly dues was voted to be due January 31st. Then the last day of the month for subsequent months.",
+  "Yearly fees will need to be paid by January 31st of each year.",
+  "Sending out communication via mailing or emailed.",
+  "Locked mailbox will be put in at the clubhouse for those who would like to mail in a check or drop off check in the mailbox. Checks only in this mailbox.",
+  "Voted to have a dumpster put in at the clubhouse. Need to vote later on about having an enclosure around the dumpster.",
+  {
+    item: "Voted to get these items done ASAP once funds are available:",
+    children: [
+      "Restore Power to the clubhouse & Front Entrance Sign",
+      "Get Internet Service at the clubhouse for security",
+      "Install a security/alarm system",
+      "Get everything insured under the HOA",
+      "Installing stop signs",
+    ],
+  },
+  "Board Members must be compliant with dues to remain on board of directors",
+  "Community Meetings for first year will be every other month starting in February",
+  "Increasing the townhome area’s dues to provide lawn care for all townhomes. – Board voted to not do this for at-least this year will re-vote next year",
+  "Voted in office positions for the year of 2023",
+  "Voted on 8 yard dumpster installed at the clubhouse",
+  "Board meetings twice a month thru February 2023 then will vote if twice a month is still needed",
+  "Seven stop signs and poles where voted to have installed. Going to see at a later date if anymore stop signs or slow kids at play signs are needed.",
+  "Clubhouse beam/foundation issue – Voted to have fixed ASAP-when funds are available",
+  "Clubhouse roof – Going to vote on fixing this next year",
+  "Clubhouse ramp – Going to get some more quotes but open to fix ourselves if necessary/have a volunteer",
+  "USPS parking issue in front of mailboxes. USPS asked us to correct, we voted to paint red no-parking 10 feet from the edge of each sign to allow room for the postal carrier to access mailboxes.",
+  "Google fees $10 a month to hold board meetings on google meets and also have storage to hold all HOA files. – Voted yes for now but reevaluate in June 2023",
+  "No overnight parking at clubhouse – Voted no for time being but will re-evaluate later",
+  "Snow removal for the streets and clubhouse – Going to wait on this hopefully do in 2024 due to not having the funds to purchase this year. Working with the city to see if we can get them to make our roads public and they will do the snow removal to save neighborhood money",
+  "Block off ramp to clubhouse due to big hole for time being – Voted yes to help with security and liability",
+  "Insuring the clubhouse and common grounds – Voted yes and to go with Country Financial",
+  "Should we only focus on the upstairs for the time being – Yes, only going to work towards the upstairs for now and look at finances on fixing the basement towards the middle/end of the year.",
+  "Repainting the exterior of the clubhouse – Yes if budget allows we will have this done this year",
+  "Parking lot patching – Waiting on this and will bring up later this year and also see if we can do ourselves to save money",
+  "Paint Interior – Decided to do this ourselves to save money will decide on a date and plan when funds are available",
+  "Basketball goal installed at the clubhouse for interim – Going to revisit later in the year since we have a lot of major projects that require the majority of the finances",
+  "Trash issue with trash all over the neighborhood – Going to see how this year goes. Seems to be better with dumpster at the clubhouse.",
+  "Dog poop all over the neighborhood – Going to send out friendly reminder on facebook and email. Going to revisit later on in the year.",
+  "Easement lawn maintenance – will be split 50/50 with the property that is directly behind or to the side. Property maintenance of easements will be discussed next year also to see if this is a pain point and if we need to increase dues to handle this. Example: the easement behind home is 50 feet. The owner would be responsible for maintenance of grass and trees, etc. of 25 feet behind the property line. Any disputes of property maintenance with neighbors on where their line is will be determined by the board of directors.",
+  "Erection of a fence on personal property – The board is fine with fences being put up on private properties within owners property lines. Fencing has to be within city ordinances guidelines. Nothing over 6 feet tall will be allowed past the front door line of the home’s fascia. Any fencing beyond the front door line has to be shorter then 4 feet in height in accordance with the unified government restrictions. If your property line runs where others utilities such as cable connections go through your line and it keeps you from putting up your fence. You can request board approval to put your fence in the easement to avoid the neighbors lines. This has to be granted by written board approval. If easement land is given to avoid neighbors utility/cable lines no permanent structure may be placed on easement land that was granted to the property owner for their fence. If property line is extended into the easement via board approval to avoid utilities/cable lines any subsequent property owner must run their fence on the same line of the existing fence. This is to help with no zig zag fences. If easement is allowed to be used due to property utility/cable line issues no chain link fencing will be allowed on the granted easement land. This is due to if repairs are ever required in the easement we need to be able to quickly remove necessary panels to make infrastructure repairs. Any questions on fencing issues please email CrystalRidgeKCK@gmail.com",
+];
+---
+
+<Layout title="Board Votes">
+  <h2 class="mb-6 text-2xl">Board Votes</h2>
+  <div>
+    <i class="mb-2 block">Last updated 02/15/2023</i>
+  </div>
+  <ul>
+    {
+      votes.map((item) => {
+        if (typeof item === "string") return <li>{item}</li>;
+        return (
+          <li>
+            {item.item}
+            <ul>
+              {item.children.map((child) => (
+                <li class="ms-4">{child}</li>
+              ))}
+            </ul>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Layout>
