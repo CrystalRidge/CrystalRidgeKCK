@@ -1,12 +1,37 @@
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export function Header() {
   const [isActive, setIsActive] = useState(false);
   const [pathname, setPathname] = useState<string>();
 
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const mobileDropdownMenuRef = useRef<HTMLUListElement>(null);
+
   useEffect(() => {
     setPathname(window.location.pathname);
+  }, []);
+
+  const handleOffClick = useCallback(function (e: MouseEvent) {
+    if (!e.target || !hamburgerRef.current || !mobileDropdownMenuRef.current)
+      return;
+
+    const target = e.target as Node;
+
+    if (
+      !hamburgerRef.current.contains(target) &&
+      !mobileDropdownMenuRef.current.contains(target)
+    ) {
+      setIsActive(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("click", handleOffClick);
+
+    return () => {
+      document.removeEventListener("click", handleOffClick);
+    };
   }, []);
 
   const links = [
@@ -44,6 +69,7 @@ export function Header() {
             "is-active": isActive,
           }
         )}
+        ref={hamburgerRef}
         onClick={() => setIsActive((isActive) => !isActive)}
         type="button"
       >
@@ -52,6 +78,7 @@ export function Header() {
         </span>
       </button>
       <ul
+        ref={mobileDropdownMenuRef}
         className={clsx([
           { "max-sm:hidden": !isActive },
           "max-sm:absolute max-sm:flex max-sm:flex-col max-sm:w-full",
