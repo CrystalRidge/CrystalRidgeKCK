@@ -13,8 +13,10 @@ specifiers:
   '@types/react-dom': ^18.0.6
   astro: ^2.1.9
   clsx: ^1.2.1
+  dotenv: ^16.0.3
   embla-carousel-autoplay: ^7.0.9
   embla-carousel-react: ^7.0.9
+  ftp: ^0.3.10
   prettier: ^2.8.4
   prettier-plugin-astro: ^0.8.0
   prettier-plugin-tailwindcss: ^0.2.3
@@ -43,8 +45,10 @@ devDependencies:
   '@mantine/core': 6.0.0_xgfpbscinl7gpxk3zixgsno7yu
   '@mantine/hooks': 5.10.4_react@18.2.0
   '@picocss/pico': 1.5.7
+  dotenv: 16.0.3
   embla-carousel-autoplay: 7.0.9
   embla-carousel-react: 7.0.9_react@18.2.0
+  ftp: 0.3.10
   prettier: 2.8.4
   prettier-plugin-astro: 0.8.0
   prettier-plugin-tailwindcss: 0.2.3_cfgkwvtfb3vmyej4cugnuognhu
@@ -464,7 +468,7 @@ packages:
       '@babel/helper-member-expression-to-functions': 7.21.0
       '@babel/helper-optimise-call-expression': 7.18.6
       '@babel/template': 7.20.7
-      '@babel/traverse': 7.20.13
+      '@babel/traverse': 7.21.4
       '@babel/types': 7.21.4
     transitivePeerDependencies:
       - supports-color
@@ -1066,7 +1070,7 @@ packages:
     dependencies:
       '@babel/core': 7.20.12
       '@babel/helper-compilation-targets': 7.21.4_@babel+core@7.20.12
-      '@babel/helper-function-name': 7.19.0
+      '@babel/helper-function-name': 7.21.0
       '@babel/helper-plugin-utils': 7.20.2
     dev: false
 
@@ -1097,7 +1101,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.20.12
-      '@babel/helper-module-transforms': 7.20.11
+      '@babel/helper-module-transforms': 7.21.2
       '@babel/helper-plugin-utils': 7.20.2
     transitivePeerDependencies:
       - supports-color
@@ -1125,7 +1129,7 @@ packages:
     dependencies:
       '@babel/core': 7.20.12
       '@babel/helper-hoist-variables': 7.18.6
-      '@babel/helper-module-transforms': 7.20.11
+      '@babel/helper-module-transforms': 7.21.2
       '@babel/helper-plugin-utils': 7.20.2
       '@babel/helper-validator-identifier': 7.19.1
     transitivePeerDependencies:
@@ -1139,7 +1143,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.20.12
-      '@babel/helper-module-transforms': 7.20.11
+      '@babel/helper-module-transforms': 7.21.2
       '@babel/helper-plugin-utils': 7.20.2
     transitivePeerDependencies:
       - supports-color
@@ -3063,14 +3067,14 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.20.12
-      '@babel/generator': 7.20.14
-      '@babel/parser': 7.20.15
-      '@babel/plugin-syntax-jsx': 7.18.6_@babel+core@7.20.12
+      '@babel/generator': 7.21.4
+      '@babel/parser': 7.21.4
+      '@babel/plugin-syntax-jsx': 7.21.4_@babel+core@7.20.12
       '@babel/plugin-syntax-typescript': 7.21.4_@babel+core@7.20.12
       '@babel/preset-env': 7.21.4_@babel+core@7.20.12
       '@babel/preset-typescript': 7.21.4_@babel+core@7.20.12
-      '@babel/traverse': 7.20.13
-      '@babel/types': 7.20.7
+      '@babel/traverse': 7.21.4
+      '@babel/types': 7.21.4
       '@esbuild-plugins/node-modules-polyfill': 0.1.4_esbuild@0.16.3
       '@npmcli/package-json': 2.0.0
       '@remix-run/server-runtime': 1.14.2
@@ -3947,7 +3951,6 @@ packages:
 
   /core-util-is/1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
-    dev: false
 
   /cosmiconfig/7.1.0:
     resolution: {integrity: sha512-AdmX6xUzdNASswsFtmwSt7Vj8po9IuqXm0UXz7QKPuEUmPB4XyjGfaAr2PSuELMwkRMVH1EpIkX5bTZGRB3eCA==}
@@ -4154,7 +4157,6 @@ packages:
   /dotenv/16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
-    dev: false
 
   /dset/3.1.2:
     resolution: {integrity: sha512-g/M9sqy3oHe477Ar4voQxWtaPIFw1jTdKZuomOjhCcBx9nHUNn0pu6NopuFFrTh/TRZIKEj+76vLWFu9BNKk+Q==}
@@ -4952,7 +4954,6 @@ packages:
     dependencies:
       readable-stream: 1.1.14
       xregexp: 2.0.0
-    dev: false
 
   /function-bind/1.1.1:
     resolution: {integrity: sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==}
@@ -5394,7 +5395,6 @@ packages:
 
   /inherits/2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
-    dev: false
 
   /inline-style-parser/0.1.1:
     resolution: {integrity: sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==}
@@ -5582,7 +5582,6 @@ packages:
 
   /isarray/0.0.1:
     resolution: {integrity: sha512-D2S+3GLxWH+uhrNEcoh/fnmYeP8E8/zHl644d/jdA0g2uyXvy3sb0qxotE+ne0LtccHknQzWwZEzhak7oJ0COQ==}
-    dev: false
 
   /isarray/1.0.0:
     resolution: {integrity: sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==}
@@ -7507,7 +7506,6 @@ packages:
       inherits: 2.0.4
       isarray: 0.0.1
       string_decoder: 0.10.31
-    dev: false
 
   /readable-stream/2.3.8:
     resolution: {integrity: sha512-8p0AUk4XODgIewSi0l8Epjs+EVnWiK7NoDIEGU0HhE7+ZyY8D1IMY7odu5lRrFXGg71L15KG8QrPmum45RTtdA==}
@@ -8124,7 +8122,6 @@ packages:
 
   /string_decoder/0.10.31:
     resolution: {integrity: sha512-ev2QzSzWPYmy9GuqfIVildA4OdcGLeFZQrq5ys6RtiuF+RQQiZWr8TZNyAcuVXyQRYfEO+MsoB/1BuQVhOJuoQ==}
-    dev: false
 
   /string_decoder/1.1.1:
     resolution: {integrity: sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==}
@@ -9116,7 +9113,6 @@ packages:
 
   /xregexp/2.0.0:
     resolution: {integrity: sha512-xl/50/Cf32VsGq/1R8jJE5ajH1yMCQkpmoS10QbFZWl2Oor4H0Me64Pu2yxvsRWK3m6soJbmGfzSR7BYmDcWAA==}
-    dev: false
 
   /xtend/4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
