@@ -2,6 +2,7 @@ import Client from "ftp";
 import * as dotenv from "dotenv";
 import * as fs from "node:fs";
 import { promisify } from "node:util";
+import { pipeline } from "node:stream/promises";
 
 dotenv.config({ path: ".env.local" });
 
@@ -49,8 +50,7 @@ async function copyDirectory() {
       await cdup();
     } else {
       const stream = await get(name);
-      // TODO turn async pipe
-      stream.pipe(fs.createWriteStream(`${outDir}/${name}`));
+      await pipeline(stream, fs.createWriteStream(`${outDir}/${name}`));
     }
   }
 }
