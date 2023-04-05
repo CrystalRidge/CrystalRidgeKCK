@@ -17,33 +17,38 @@ if (!fs.existsSync(outDir)) {
   fs.mkdirSync(outDir);
 }
 
-var c = new Client();
+var numFiles = 0;
+
+const c = new Client();
 c.on("ready", function () {
+  copyDirectory();
+  console.log(numFiles);
+  c.end();
+});
+
+c.connect(config);
+
+function copyDirectory() {
   c.list(function (err, list) {
     if (err) throw err;
 
-    console.log(
-      `Number of files: ${list.filter(({ type }) => type !== "d").length}`
-    );
+    numFiles += list.filter(({ type }) => type !== "d").length;
 
     list.forEach(({ name, type }) => {
       if (name === "." || name === "..") return;
 
-      // TODO recursion
-      if (type === "d") return;
+      if (type === "d") {
+        c.cwd(name, function () {
+          copyDirectory();
+        });
+        return;
+      }
 
       c.get(name, function (err, stream) {
-        if (err) {
-          //   console.log("ERROR:", name);
-          return;
-        }
+        if (err) return;
+
         stream.pipe(fs.createWriteStream(`${outDir}/${name}`));
-        // console.log("Downloaded:", name);
       });
     });
-
-    c.end();
   });
-});
-
-c.connect(config);
+}
