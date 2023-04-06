@@ -53,6 +53,7 @@ async function copyDirectory() {
       const outputLocation = `${outDir}${path}${
         path.endsWith("/") ? "" : "/"
       }${name}`;
+      console.log(outputLocation);
       await pipeline(stream, fs.createWriteStream(outputLocation));
     }
   }
