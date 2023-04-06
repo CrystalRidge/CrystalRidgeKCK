@@ -47,7 +47,7 @@ async function copyDirectory() {
     const path = `${outDir}${await pwd()}`;
     if (type === "d") {
       await cwd(name);
-      await ensureDir(path);
+      await ensureDir(`${path}/${name}`);
       await copyDirectory();
       await cdup();
     } else {
