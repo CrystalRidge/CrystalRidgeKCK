@@ -26,6 +26,8 @@ const pwd = promisify(c.pwd).bind(c);
 const list = promisify(c.list).bind(c);
 const get = promisify(c.get).bind(c);
 
+await ensureDir(outDir);
+
 c.on("ready", async function () {
   await copyDirectory();
   console.log(numFiles);
