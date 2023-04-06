@@ -10,7 +10,7 @@ const outDir = "wp-backup";
 
 const config = {
   host: process.env.server,
-  port: parseInt(process.env.port!),
+  port: parseInt(process.env.port),
   user: process.env.username,
   password: process.env.password,
 };
@@ -26,7 +26,7 @@ const c = new Client();
 const cwd = promisify(c.cwd);
 const cdup = promisify(c.cdup);
 const list = promisify(c.list);
-const get = promisify<string, NodeJS.ReadableStream>(c.get);
+const get = promisify(c.get);
 
 c.on("ready", async function () {
   await copyDirectory();
