@@ -16,8 +16,6 @@ const config = {
   password: process.env.password,
 };
 
-await ensureDir(outDir);
-
 var numFiles = 0;
 
 const c = new Client();
