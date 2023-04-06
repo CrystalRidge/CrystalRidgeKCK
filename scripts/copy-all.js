@@ -23,10 +23,10 @@ var numFiles = 0;
 
 const c = new Client();
 
-const cwd = promisify(c.cwd);
-const cdup = promisify(c.cdup);
-const list = promisify(c.list);
-const get = promisify(c.get);
+const cwd = promisify(c.cwd).bind(c);
+const cdup = promisify(c.cdup).bind(c);
+const list = promisify(c.list).bind(c);
+const get = promisify(c.get).bind(c);
 
 c.on("ready", async function () {
   await copyDirectory();
