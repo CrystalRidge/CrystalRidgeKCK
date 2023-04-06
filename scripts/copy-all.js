@@ -3,6 +3,7 @@ import * as dotenv from "dotenv";
 import * as fs from "node:fs";
 import { promisify } from "node:util";
 import { pipeline } from "node:stream/promises";
+import { ensureDir } from "fs-extra";
 
 dotenv.config({ path: ".env.local" });
 
@@ -15,9 +16,7 @@ const config = {
   password: process.env.password,
 };
 
-if (!fs.existsSync(outDir)) {
-  fs.mkdirSync(outDir);
-}
+await ensureDir(outDir);
 
 var numFiles = 0;
 
@@ -25,6 +24,7 @@ const c = new Client();
 
 const cwd = promisify(c.cwd).bind(c);
 const cdup = promisify(c.cdup).bind(c);
+const pwd = promisify(c.pwd).bind(c);
 const list = promisify(c.list).bind(c);
 const get = promisify(c.get).bind(c);
 
@@ -50,7 +50,12 @@ async function copyDirectory() {
       await cdup();
     } else {
       const stream = await get(name);
-      await pipeline(stream, fs.createWriteStream(`${outDir}/${name}`));
+      const path = await pwd();
+      await ensureDir(`${outDir}${path}`);
+      const outputLocation = `${outDir}${path}${
+        path.endsWith("/") ? "" : "/"
+      }${name}`;
+      await pipeline(stream, fs.createWriteStream(outputLocation));
     }
   }
 }
