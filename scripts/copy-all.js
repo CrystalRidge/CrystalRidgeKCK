@@ -42,10 +42,9 @@ async function copyDirectory() {
   for (const { name, type } of files) {
     if (name === "." || name === "..") continue;
 
-    let path;
+    const path = `${outDir}${await pwd()}`;
     if (type === "d") {
       await cwd(name);
-      path = `${outDir}${await pwd()}`;
       await ensureDir(path);
       await copyDirectory();
       await cdup();
