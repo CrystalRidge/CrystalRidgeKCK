@@ -41,7 +41,7 @@ async function copyDirectory() {
 
   numFiles += files.filter(({ type }) => type !== "d").length;
 
-  for await (const { name, type } of files) {
+  for (const { name, type } of files) {
     if (name === "." || name === "..") continue;
 
     if (type === "d") {
