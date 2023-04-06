@@ -42,17 +42,16 @@ async function copyDirectory() {
   for (const { name, type } of files) {
     if (name === "." || name === "..") continue;
 
+    let path;
     if (type === "d") {
       await cwd(name);
+      path = `${outDir}${await pwd()}`;
+      await ensureDir(path);
       await copyDirectory();
       await cdup();
     } else {
       const stream = await get(name);
-      const path = await pwd();
-      await ensureDir(`${outDir}${path}`);
-      const outputLocation = `${outDir}${path}${
-        path.endsWith("/") ? "" : "/"
-      }${name}`;
+      const outputLocation = `${path}${path.endsWith("/") ? "" : "/"}${name}`;
       console.log(outputLocation);
       await pipeline(stream, fs.createWriteStream(outputLocation));
     }
