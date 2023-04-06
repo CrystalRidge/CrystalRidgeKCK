@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "pnpm build && vercel",
-    "backup": "tsc ./scripts/copy-all.ts"
+    "backup": "node ./scripts/copy-all.js"
   },
   "dependencies": {
     "@astrojs/react": "^2.0.2",
