@@ -2,8 +2,8 @@ import Client from "ftp";
 import * as dotenv from "dotenv";
 import * as fs from "node:fs";
 import { promisify } from "node:util";
-import { pipeline } from "node:stream/promises";
 import { ensureDir } from "fs-extra";
+import { appendFile } from "node:fs/promises";
 
 dotenv.config({ path: ".env.local" });
 
@@ -30,7 +30,6 @@ await ensureDir(outDir);
 
 c.on("ready", async function () {
   await copyDirectory();
-  console.log(numFiles);
   c.end();
 });
 
@@ -51,10 +50,11 @@ async function copyDirectory() {
       await copyDirectory();
       await cdup();
     } else {
-      const stream = await get(name);
       const outputLocation = `${path}${path.endsWith("/") ? "" : "/"}${name}`;
-      console.log(outputLocation);
-      await pipeline(stream, fs.createWriteStream(outputLocation));
+      appendFile("./backupList.txt", `${outputLocation}\n`);
+      get(name).then((stream) =>
+        stream.pipe(fs.createWriteStream(outputLocation))
+      );
     }
   }
 }
