@@ -51,10 +51,10 @@ async function copyDirectory() {
       await cdup();
     } else {
       const outputLocation = `${path}${path.endsWith("/") ? "" : "/"}${name}`;
-      appendFile("./backupList.txt", `${outputLocation}\n`);
-      get(name).then((stream) =>
+      await get(name).then((stream) =>
         stream.pipe(fs.createWriteStream(outputLocation))
       );
+      appendFile("./backupList.txt", `${outputLocation}\n`);
     }
   }
 }
