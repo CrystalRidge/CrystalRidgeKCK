@@ -34,7 +34,7 @@ const items = [
   },
   {
     name: "Front entrance road repaired along with potholes",
-    completed: false,
+    completed: true,
   },
   {
     name: "North East Column needs fixed at clubhouse",
@@ -42,7 +42,7 @@ const items = [
   },
   {
     name: "Fixing railing on the exterior of the clubhouse to help with safety concerns",
-    completed: false,
+    completed: true,
   },
   {
     name: "Security System installed at the clubhouse",
@@ -54,15 +54,15 @@ const items = [
   },
   {
     name: "Cleaning out the pool",
-    completed: false,
+    completed: true,
   },
   {
     name: "Repainting and repairs to the upstairs of the clubhouse and new flooring (Board is planning on DIY on the interior to save money)",
-    completed: false,
+    completed: true,
   },
   {
     name: "Opening up the clubhouse upstairs for HOA Meetings, Community Meetings and allowing neighbors paying their HOA fees to use for private events such as a Birthday Party, Bridal Shower, etc. with a refundable deposit put down incase of damages.",
-    completed: false,
+    completed: true,
   },
   {
     name: "Setting up snow removal for next year (Working with the City to see if they will take on maintenance of the roads after we perform fixes so they will do snow removal and future repairs and maintenance)",
@@ -84,12 +84,16 @@ const futureIdeas = [
   <h2 class="mb-6 text-2xl">Come lend a hand!</h2>
   <div class="grid !grid-cols-[auto_1fr] gap-1">
     {
-      items.map(({ completed, name }) => (
-        <>
-          {completed ? <Checked /> : <Unchecked />}
-          {name}
-        </>
-      ))
+      items
+        .sort(({ completed: completed1 }, { completed: completed2 }) =>
+          completed1 === completed2 ? 0 : completed1 ? -1 : 1
+        )
+        .map(({ completed, name }) => (
+          <>
+            {completed ? <Checked /> : <Unchecked />}
+            {name}
+          </>
+        ))
     }
   </div>
   <div>
