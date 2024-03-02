@@ -85,15 +85,15 @@ const futureIdeas = [
   <div class="grid !grid-cols-[auto_1fr] gap-1">
     {
       items
-        .sort(({ completed: completed1 }, { completed: completed2 }) =>
-          completed1 === completed2 ? 0 : completed1 ? -1 : 1
-        )
-        .map(({ completed, name }) => (
-          <>
-            {completed ? <Checked /> : <Unchecked />}
-            {name}
-          </>
-        ))
+          .sort(({ completed: completed1 }, { completed: completed2 }) =>
+              completed1 === completed2 ? 0 : completed1 ? -1 : 1
+          )
+          .map(({ completed, name }) => (
+              <>
+                {completed ? <Checked /> : <Unchecked />}
+                {name}
+              </>
+          ))
     }
   </div>
   <div>
