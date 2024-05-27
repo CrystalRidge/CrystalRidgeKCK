@@ -18,11 +18,11 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title + " | Crystal Ridge"}</title>
+    <title>{title} | Crystal Ridge</title>
   </head>
   <Header client:load />
   <body class="relative text-sm">
-    <main class="container pt-10 px-4 pb-0">
+    <main class="container px-4 pb-0 pt-10">
       <slot />
     </main>
   </body>
