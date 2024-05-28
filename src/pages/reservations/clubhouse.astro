@@ -1,0 +1,13 @@
+---
+import { db } from "astro:db";
+
+if (Astro.request.method === "POST") {
+  // parse form data
+  const formData = await Astro.request.formData();
+  console.log(formData, db);
+}
+---
+
+<form method="POST">
+  <button type="submit">Submit</button>
+</form>

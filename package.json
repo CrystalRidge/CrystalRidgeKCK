@@ -11,6 +11,7 @@
     "deploy": "bun run build && vercel --prod"
   },
   "dependencies": {
+    "@astrojs/db": "^0.11.4",
     "@astrojs/react": "^3.4.0",
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/vercel": "^7.6.0",
