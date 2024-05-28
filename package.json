@@ -8,7 +8,7 @@
     "build": "bunx astro build",
     "preview": "bunx astro preview",
     "astro": "bunx astro",
-    "deploy": "bun run build && vercel --prod"
+    "deploy": "bun run build --remote && vercel --prod"
   },
   "dependencies": {
     "@astrojs/db": "^0.11.4",
