@@ -3,19 +3,14 @@ import { db, ClubhouseReservations } from "astro:db";
 import { TextInput, Button } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import { PhoneNumberInput } from "../../components/PhoneNumberInput";
+import { getData, validateData } from "../../utils/clubhouseReservationForm";
 
 if (Astro.request.method === "POST") {
   const formData = await Astro.request.formData();
 
-  const reservationDate = new Date(formData.get("reservation-date") as string);
-  const emailAddress = formData.get("email-address");
-  const phoneNumber = formData.get("phone-number");
+  const { reservationDate, emailAddress, phoneNumber } = getData(formData);
 
-  if (
-    !isNaN(reservationDate.valueOf()) &&
-    typeof emailAddress === "string" &&
-    typeof phoneNumber === "string"
-  ) {
+  if (validateData({ reservationDate, emailAddress, phoneNumber })) {
     await db.insert(ClubhouseReservations).values({
       reservationDate,
       emailAddress,
@@ -41,7 +36,7 @@ const nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
   <title>Clubhouse Reservation | Crystal Ridge</title>
 </head>
 <h2 class="font-sans">Clubhouse Reservation</h2>
-<form class="flex flex-col gap-2 max-w-prose" method="POST">
+<form class="flex flex-col gap-2 max-w-prose" id="reservation" method="POST">
   <DatePickerInput
     client:only
     required
@@ -54,3 +49,20 @@ const nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
   <PhoneNumberInput client:only name="phone-number" />
   <Button client:only type="submit" className="w-fit">Submit</Button>
 </form>
+<script>
+  import { getData, validateData } from "../../utils/clubhouseReservationForm";
+
+  const form = document
+    .getElementById("reservation")
+    ?.addEventListener("submit", (e) => {
+      if (!e.target) return;
+
+      const formData = new FormData(e.target as HTMLFormElement);
+
+      const { reservationDate, emailAddress, phoneNumber } = getData(formData);
+
+      if (!validateData({ reservationDate, emailAddress, phoneNumber })) {
+        e.preventDefault();
+      }
+    });
+</script>
