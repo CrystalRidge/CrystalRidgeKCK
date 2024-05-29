@@ -1,8 +1,7 @@
 export function getData(formData: FormData) {
-  const reservationDate = new Date(formData.get("reservation-date") as string);
   const emailAddress = formData.get("email-address") as string;
   const phoneNumber = formData.get("phone-number") as string;
-  return { reservationDate, emailAddress, phoneNumber };
+  return { emailAddress, phoneNumber };
 }
 
 export function validateData({

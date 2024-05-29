@@ -8,7 +8,8 @@ import { getData, validateData } from "../../utils/clubhouseReservationForm";
 if (Astro.request.method === "POST") {
   const formData = await Astro.request.formData();
 
-  const { reservationDate, emailAddress, phoneNumber } = getData(formData);
+  const { emailAddress, phoneNumber } = getData(formData);
+  const { reservationDate } = window;
 
   if (validateData({ reservationDate, emailAddress, phoneNumber })) {
     await db.insert(ClubhouseReservations).values({
@@ -26,6 +27,12 @@ if (Astro.request.method === "POST") {
 }
 
 const nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
+
+declare global {
+  interface Window {
+    reservationDate: Date;
+  }
+}
 ---
 
 <form class="flex flex-col gap-2 max-w-prose" id="reservation" method="POST">
@@ -34,6 +41,9 @@ const nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
     client:only
     minDate={new Date()}
     maxDate={nextYear}
+    onDateChange={(date) => {
+      window.reservationDate = date;
+    }}
   />
   <TextInput client:only required name="email-address" label="Email Address" />
   <PhoneNumberInput client:only name="phone-number" />
@@ -49,7 +59,8 @@ const nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
 
       const formData = new FormData(e.target as HTMLFormElement);
 
-      const { reservationDate, emailAddress, phoneNumber } = getData(formData);
+      const { emailAddress, phoneNumber } = getData(formData);
+      const { reservationDate } = window;
 
       if (!validateData({ reservationDate, emailAddress, phoneNumber })) {
         e.preventDefault();
