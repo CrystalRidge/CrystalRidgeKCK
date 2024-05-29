@@ -28,14 +28,6 @@ if (Astro.request.method === "POST") {
 const nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
 ---
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="generator" content={Astro.generator} />
-  <title>Clubhouse Reservation | Crystal Ridge</title>
-</head>
-<h2 class="font-sans">Clubhouse Reservation</h2>
 <form class="flex flex-col gap-2 max-w-prose" id="reservation" method="POST">
   <DatePickerInput
     client:only
