@@ -1,25 +1,27 @@
 ---
 import { db } from "astro:db";
-import { TextInput, InputBase, Button } from "@mantine/core";
+import { TextInput, Button } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
-import { IMaskInput } from "react-imask";
+import { PhoneNumberInput } from "../../components/PhoneNumberInput";
 
 if (Astro.request.method === "POST") {
   // parse form data
   const formData = await Astro.request.formData();
-  console.log(formData, db);
+  const date = formData.get("reservation-date");
+  const email = formData.get("email-address");
+  const phoneNumber = formData.get("phone-number");
+  return new Response(`${date} ${email} ${phoneNumber}`);
 }
 ---
 
-<form class="flex flex-col gap-2" method="POST">
-  <DatePickerInput client:only required label="Reservation Date" />
-  <TextInput client:only required label="Email Address" />
-  <InputBase
+<form class="flex flex-col gap-2 max-w-prose" method="POST">
+  <DatePickerInput
     client:only
     required
-    label="Phone Number"
-    component={IMaskInput}
-    mask="(000) 000-0000"
+    name="reservation-date"
+    label="Reservation Date"
   />
+  <TextInput client:only required name="email-address" label="Email Address" />
+  <PhoneNumberInput client:only name="phone-number" />
   <Button client:only type="submit" className="w-fit">Submit</Button>
 </form>
