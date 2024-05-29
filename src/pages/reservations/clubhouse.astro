@@ -1,5 +1,8 @@
 ---
 import { db } from "astro:db";
+import { TextInput, InputBase, Button } from "@mantine/core";
+import { DatePickerInput } from "@mantine/dates";
+import { IMaskInput } from "react-imask";
 
 if (Astro.request.method === "POST") {
   // parse form data
@@ -8,6 +11,15 @@ if (Astro.request.method === "POST") {
 }
 ---
 
-<form method="POST">
-  <button type="submit">Submit</button>
+<form class="flex flex-col gap-2" method="POST">
+  <DatePickerInput client:only required label="Reservation Date" />
+  <TextInput client:only required label="Email Address" />
+  <InputBase
+    client:only
+    required
+    label="Phone Number"
+    component={IMaskInput}
+    mask="(000) 000-0000"
+  />
+  <Button client:only type="submit" className="w-fit">Submit</Button>
 </form>

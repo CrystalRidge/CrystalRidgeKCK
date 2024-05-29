@@ -1,6 +1,13 @@
-import { defineDb } from 'astro:db';
+import { defineDb, defineTable, column } from "astro:db";
 
-// https://astro.build/db/config
+const ClubhouseReservations = defineTable({
+  columns: {
+    emailAddress: column.text(),
+    phoneNumber: column.number(),
+    reservationDate: column.date(),
+  },
+});
+
 export default defineDb({
-  tables: {}
+  tables: { ClubhouseReservations },
 });
