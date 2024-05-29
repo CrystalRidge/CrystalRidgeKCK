@@ -30,7 +30,7 @@ const nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
 
 <form class="flex flex-col gap-2 max-w-prose" id="reservation" method="POST">
   <DatePicker
-    className="[&>div]:justify-center mb-4"
+    className="mb-4"
     client:only
     minDate={new Date()}
     maxDate={nextYear}
