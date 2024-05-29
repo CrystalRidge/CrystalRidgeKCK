@@ -1,60 +1,8 @@
 ---
-import { db, ClubhouseReservations } from "astro:db";
-import { TextInput, Button } from "@mantine/core";
-import { DatePickerInput } from "@mantine/dates";
-import { PhoneNumberInput } from "../../components/PhoneNumberInput";
-import { getData, validateData } from "../../utils/clubhouseReservationForm";
-
-if (Astro.request.method === "POST") {
-  const formData = await Astro.request.formData();
-
-  const { reservationDate, emailAddress, phoneNumber } = getData(formData);
-
-  if (validateData({ reservationDate, emailAddress, phoneNumber })) {
-    await db.insert(ClubhouseReservations).values({
-      reservationDate,
-      emailAddress,
-      phoneNumber,
-    });
-
-    return new Response(
-      `Success!!\nYou've reserved the clubhouse on ${reservationDate.toLocaleDateString("en-us", { weekday: "long", year: "numeric", month: "short", day: "numeric" })}\n\nEmail Address: ${emailAddress}\nPhone Number: ${phoneNumber}`
-    );
-  } else {
-    return new Response("Something went wrong!");
-  }
-}
-
-const nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
+import Layout from "../../layouts/Layout.astro";
 ---
 
-<form class="flex flex-col gap-2 max-w-prose" id="reservation" method="POST">
-  <DatePickerInput
-    client:only
-    required
-    name="reservation-date"
-    label="Reservation Date"
-    minDate={new Date()}
-    maxDate={nextYear}
-  />
-  <TextInput client:only required name="email-address" label="Email Address" />
-  <PhoneNumberInput client:only name="phone-number" />
-  <Button client:only type="submit" className="w-fit">Submit</Button>
-</form>
-<script>
-  import { getData, validateData } from "../../utils/clubhouseReservationForm";
-
-  const form = document
-    .getElementById("reservation")
-    ?.addEventListener("submit", (e) => {
-      if (!e.target) return;
-
-      const formData = new FormData(e.target as HTMLFormElement);
-
-      const { reservationDate, emailAddress, phoneNumber } = getData(formData);
-
-      if (!validateData({ reservationDate, emailAddress, phoneNumber })) {
-        e.preventDefault();
-      }
-    });
-</script>
+<Layout title="Reserve the Clubhouse">
+  <iframe src="/reservations/clubhouse-frame" class="w-full min-h-[30rem]"
+  ></iframe>
+</Layout>
