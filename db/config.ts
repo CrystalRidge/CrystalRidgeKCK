@@ -3,7 +3,7 @@ import { defineDb, defineTable, column } from "astro:db";
 const ClubhouseReservations = defineTable({
   columns: {
     emailAddress: column.text(),
-    phoneNumber: column.number(),
+    phoneNumber: column.text(),
     reservationDate: column.date(),
   },
 });

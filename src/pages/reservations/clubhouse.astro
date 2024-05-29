@@ -1,5 +1,5 @@
 ---
-import { db } from "astro:db";
+import { db, ClubhouseReservations } from "astro:db";
 import { TextInput, Button } from "@mantine/core";
 import { DatePickerInput } from "@mantine/dates";
 import { PhoneNumberInput } from "../../components/PhoneNumberInput";
@@ -7,10 +7,27 @@ import { PhoneNumberInput } from "../../components/PhoneNumberInput";
 if (Astro.request.method === "POST") {
   // parse form data
   const formData = await Astro.request.formData();
-  const date = formData.get("reservation-date");
-  const email = formData.get("email-address");
+  const reservationDate = formData.get("reservation-date");
+  const emailAddress = formData.get("email-address");
   const phoneNumber = formData.get("phone-number");
-  return new Response(`${date} ${email} ${phoneNumber}`);
+
+  if (
+    reservationDate &&
+    emailAddress &&
+    phoneNumber &&
+    typeof reservationDate === "string" &&
+    typeof emailAddress === "string" &&
+    typeof phoneNumber === "string"
+  ) {
+    reservationDate;
+    await db.insert(ClubhouseReservations).values({
+      reservationDate: new Date(reservationDate),
+      emailAddress,
+      phoneNumber,
+    });
+
+    return new Response(`${reservationDate} ${emailAddress} ${phoneNumber}`);
+  }
 }
 ---
 
