@@ -5,30 +5,32 @@ import { DatePickerInput } from "@mantine/dates";
 import { PhoneNumberInput } from "../../components/PhoneNumberInput";
 
 if (Astro.request.method === "POST") {
-  // parse form data
   const formData = await Astro.request.formData();
-  const reservationDate = formData.get("reservation-date");
+
+  const reservationDate = new Date(formData.get("reservation-date") as string);
   const emailAddress = formData.get("email-address");
   const phoneNumber = formData.get("phone-number");
 
   if (
-    reservationDate &&
-    emailAddress &&
-    phoneNumber &&
-    typeof reservationDate === "string" &&
+    !isNaN(reservationDate.valueOf()) &&
     typeof emailAddress === "string" &&
     typeof phoneNumber === "string"
   ) {
-    reservationDate;
     await db.insert(ClubhouseReservations).values({
-      reservationDate: new Date(reservationDate),
+      reservationDate,
       emailAddress,
       phoneNumber,
     });
 
-    return new Response(`${reservationDate} ${emailAddress} ${phoneNumber}`);
+    return new Response(
+      `Success!!\nYou've reserved the clubhouse on ${reservationDate.toLocaleDateString("en-us", { weekday: "long", year: "numeric", month: "short", day: "numeric" })}\n\nEmail Address: ${emailAddress}\nPhone Number: ${phoneNumber}`
+    );
+  } else {
+    return new Response("Something went wrong!");
   }
 }
+
+const nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
 ---
 
 <head>
@@ -45,6 +47,8 @@ if (Astro.request.method === "POST") {
     required
     name="reservation-date"
     label="Reservation Date"
+    minDate={new Date()}
+    maxDate={nextYear}
   />
   <TextInput client:only required name="email-address" label="Email Address" />
   <PhoneNumberInput client:only name="phone-number" />
