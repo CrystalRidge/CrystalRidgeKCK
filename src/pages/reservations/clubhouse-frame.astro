@@ -1,10 +1,9 @@
 ---
 import { db, ClubhouseReservations } from "astro:db";
 import { TextInput, Button } from "@mantine/core";
-import { DatePickerInput } from "@mantine/dates";
+import { DatePicker } from "@mantine/dates";
 import { PhoneNumberInput } from "../../components/PhoneNumberInput";
 import { getData, validateData } from "../../utils/clubhouseReservationForm";
-import "@astrojs/tailwind/base.css";
 
 if (Astro.request.method === "POST") {
   const formData = await Astro.request.formData();
@@ -30,11 +29,9 @@ const nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
 ---
 
 <form class="flex flex-col gap-2 max-w-prose" id="reservation" method="POST">
-  <DatePickerInput
+  <DatePicker
+    className="[&>div]:justify-center mb-4"
     client:only
-    required
-    name="reservation-date"
-    label="Reservation Date"
     minDate={new Date()}
     maxDate={nextYear}
   />
