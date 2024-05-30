@@ -20,7 +20,7 @@ export function DateInput({ reservedDates }: { reservedDates: Date[] }) {
               (currentDate) => currentDate.toString() === date.toString()
             )
           ) {
-            return { disabled: true };
+            return { disabled: true, className: "!text-red-300" };
           }
 
           return {};

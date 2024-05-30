@@ -45,17 +45,15 @@ const reservedDates = (
 <script>
   import { getData, validateData } from "../../utils/clubhouseReservationForm";
 
-  const form = document
-    .getElementById("reservation")
-    ?.addEventListener("submit", (e) => {
-      if (!e.target) return;
+  document.getElementById("reservation")?.addEventListener("submit", (e) => {
+    if (!e.target) return;
 
-      const formData = new FormData(e.target as HTMLFormElement);
+    const formData = new FormData(e.target as HTMLFormElement);
 
-      const data = getData(formData);
+    const data = getData(formData);
 
-      if (!validateData(data)) {
-        e.preventDefault();
-      }
-    });
+    if (!validateData(data)) {
+      e.preventDefault();
+    }
+  });
 </script>
