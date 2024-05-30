@@ -3,15 +3,19 @@ import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout title="Reserve the Clubhouse">
-  <h2>Clubhouse Reservations</h2>
-  <p>
-    The Clubhouse is now open for private events! <a
-      href="/pdf/Clubhouse-Rental-Information.pdf"
-      target="_blank"
-      rel="noopener noreferrer">Read the announcement from our HOA President!</a
-    >
-  </p>
-  <h3>Make a reservation here</h3>
+  <h2 class="mb-3">Clubhouse Reservations</h2>
+  <div class="mb-2">
+    Our Clubhouse is now open for private events!
+    <div>
+      <a
+        href="/pdf/Clubhouse-Rental-Information.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Read the announcement from our HOA President.</a
+      >
+    </div>
+  </div>
+  <h3>Make a reservation</h3>
   <iframe src="/reservations/clubhouse-frame" class="w-full h-dvh"></iframe>
   <script>
     import iframeResize from "@iframe-resizer/parent";
