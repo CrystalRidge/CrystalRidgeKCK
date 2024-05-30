@@ -23,11 +23,13 @@ if (Astro.request.method === "POST") {
 }
 
 const reservedDays = await db
-  .select({ reservations: ClubhouseReservations.reservationDate })
+  .select({ reservation: ClubhouseReservations.reservationDate })
   .from(ClubhouseReservations);
 ---
 
-<div class="sr-only">{reservedDays}</div>
+<div class="sr-only">
+  {reservedDays.map(({ reservation }) => <div>{reservation}</div>)}
+</div>
 <form class="flex flex-col gap-2 max-w-prose" id="reservation" method="POST">
   <DateInput client:only />
   <TextInput client:only required name="email-address" label="Email Address" />
