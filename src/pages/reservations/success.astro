@@ -1,1 +1,14 @@
-Success!
+---
+import "../styles/pico/custom-pico.scss";
+
+const params = Astro.url.searchParams;
+const reservationDate = params.get("reservationDate")!;
+---
+
+<div>
+  <p>
+    Congrats! You've reserved the Clubhouse for {
+      new Date(parseInt(reservationDate))
+    }!
+  </p>
+</div>
