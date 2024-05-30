@@ -12,7 +12,11 @@ if (Astro.request.method === "POST") {
   const { reservationDate, emailAddress, phoneNumber } = data;
 
   if (validateData(data)) {
-    await db.insert(ClubhouseReservations).values(data);
+    try {
+      await db.insert(ClubhouseReservations).values(data);
+    } catch (error) {
+      return new Response("Something went wrong!");
+    }
 
     return new Response(
       `Success!!\nYou've reserved the clubhouse on ${reservationDate.toLocaleDateString("en-us", { weekday: "long", year: "numeric", month: "short", day: "numeric" })}\n\nEmail Address: ${emailAddress}\nPhone Number: ${phoneNumber}`
