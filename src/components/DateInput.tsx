@@ -15,6 +15,9 @@ export function DateInput({ reservedDates }: { reservedDates: Date[] }) {
         onChange={setDate}
         minDate={twoWeeks}
         maxDate={nextYear}
+        hideOutsideDates
+        defaultDate={twoWeeks}
+        weekendDays={[]}
         getDayProps={(date) => {
           if (
             reservedDates.some(
