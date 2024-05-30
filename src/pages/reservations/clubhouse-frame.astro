@@ -52,6 +52,7 @@ const reservedDates = (
   <Button client:only type="submit" className="w-fit">Submit</Button>
 </form>
 <script>
+  import "@iframe-resizer/child";
   import { getData, validateData } from "../../utils/clubhouseReservationForm";
 
   document.getElementById("reservation")?.addEventListener("submit", (e) => {

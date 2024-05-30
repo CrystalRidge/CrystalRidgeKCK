@@ -4,6 +4,11 @@ import Layout from "../../layouts/Layout.astro";
 
 <Layout title="Reserve the Clubhouse">
   <h2>Reserve the Clubhouse</h2>
-  <iframe src="/reservations/clubhouse-frame" class="w-full min-h-[50rem]"
-  ></iframe>
+  <iframe src="/reservations/clubhouse-frame" class="w-full h-dvh"></iframe>
+  <script>
+    import iframeResize from "@iframe-resizer/parent";
+
+    // @ts-ignore
+    iframeResize({ license: "GPLv3" }, "iframe");
+  </script>
 </Layout>
