@@ -2,6 +2,7 @@ import { DatePicker, DateInput as MantineDateInput } from "@mantine/dates";
 import { useState } from "react";
 
 const nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
+const twoWeeks = getDateInWeeks(2);
 
 export function DateInput({ reservedDates }: { reservedDates: Date[] }) {
   const [date, setDate] = useState<Date | null>(null);
@@ -12,7 +13,7 @@ export function DateInput({ reservedDates }: { reservedDates: Date[] }) {
         className="mb-4"
         value={date}
         onChange={setDate}
-        minDate={new Date()}
+        minDate={twoWeeks}
         maxDate={nextYear}
         getDayProps={(date) => {
           if (
@@ -33,4 +34,10 @@ export function DateInput({ reservedDates }: { reservedDates: Date[] }) {
       />
     </>
   );
+}
+
+function getDateInWeeks(numberOfWeeks: number) {
+  const date = new Date();
+  date.setDate(date.getDate() + numberOfWeeks * 7);
+  return date;
 }
