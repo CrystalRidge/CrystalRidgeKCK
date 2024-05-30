@@ -1,6 +1,6 @@
 ---
 import { db, ClubhouseReservations } from "astro:db";
-import { TextInput, Button } from "@mantine/core";
+import { TextInput, Button, Textarea } from "@mantine/core";
 import { PhoneNumberInput } from "../../components/PhoneNumberInput";
 import { getData, validateData } from "../../utils/clubhouseReservationForm";
 import { DateInput } from "../../components/DateInput";
@@ -8,14 +8,11 @@ import { DateInput } from "../../components/DateInput";
 if (Astro.request.method === "POST") {
   const formData = await Astro.request.formData();
 
-  const { reservationDate, emailAddress, phoneNumber } = getData(formData);
+  const data = getData(formData);
+  const { reservationDate, emailAddress, phoneNumber } = data;
 
-  if (validateData({ reservationDate, emailAddress, phoneNumber })) {
-    await db.insert(ClubhouseReservations).values({
-      reservationDate,
-      emailAddress,
-      phoneNumber,
-    });
+  if (validateData(data)) {
+    await db.insert(ClubhouseReservations).values(data);
 
     return new Response(
       `Success!!\nYou've reserved the clubhouse on ${reservationDate.toLocaleDateString("en-us", { weekday: "long", year: "numeric", month: "short", day: "numeric" })}\n\nEmail Address: ${emailAddress}\nPhone Number: ${phoneNumber}`
@@ -30,6 +27,9 @@ if (Astro.request.method === "POST") {
   <DateInput client:only />
   <TextInput client:only required name="email-address" label="Email Address" />
   <PhoneNumberInput client:only name="phone-number" />
+  <TextInput client:only required name="address" label="Street Address" />
+  <TextInput client:only required name="event-type" label="Event Type" />
+  <Textarea client:only name="description" label="Description" />
   <Button client:only type="submit" className="w-fit">Submit</Button>
 </form>
 <script>
@@ -42,9 +42,9 @@ if (Astro.request.method === "POST") {
 
       const formData = new FormData(e.target as HTMLFormElement);
 
-      const { reservationDate, emailAddress, phoneNumber } = getData(formData);
+      const data = getData(formData);
 
-      if (!validateData({ reservationDate, emailAddress, phoneNumber })) {
+      if (!validateData(data)) {
         e.preventDefault();
       }
     });
