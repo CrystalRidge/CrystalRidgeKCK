@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const nextYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
 
-export function DateInput() {
+export function DateInput({ reservedDates }: { reservedDates: Date[] }) {
   const [date, setDate] = useState<Date | null>(null);
 
   return (
@@ -14,6 +14,17 @@ export function DateInput() {
         onChange={setDate}
         minDate={new Date()}
         maxDate={nextYear}
+        getDayProps={(date) => {
+          if (
+            reservedDates.some(
+              (currentDate) => currentDate.toString() === date.toString()
+            )
+          ) {
+            return { disabled: true };
+          }
+
+          return {};
+        }}
       />
       <MantineDateInput
         className="sr-only"
