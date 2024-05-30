@@ -24,7 +24,7 @@ if (Astro.request.method === "POST") {
     return new Response("", {
       status: 302,
       headers: {
-        Location: `/reservations/success?reservationDate=${reservationDate.toString()}&emailAddress=${emailAddress}&phoneNumber=${phoneNumber}`,
+        Location: `/reservations/success?reservationDate=${reservationDate.getTime()}&emailAddress=${emailAddress}&phoneNumber=${phoneNumber}`,
       },
     });
   } else {
