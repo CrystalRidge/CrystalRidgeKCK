@@ -15,14 +15,23 @@ if (Astro.request.method === "POST") {
     try {
       await db.insert(ClubhouseReservations).values(data);
     } catch (error) {
-      return new Response("Something went wrong!");
+      return new Response("", {
+        status: 302,
+        headers: { Location: "/reservations/error" },
+      });
     }
 
-    return new Response(
-      `Success!!\nYou've reserved the clubhouse on ${reservationDate.toLocaleDateString("en-us", { weekday: "long", year: "numeric", month: "short", day: "numeric" })}\n\nEmail Address: ${emailAddress}\nPhone Number: ${phoneNumber}`
-    );
+    return new Response("", {
+      status: 302,
+      headers: {
+        Location: `/reservations/success?reservationDate=${reservationDate.toString()}&emailAddress=${emailAddress}&phoneNumber=${phoneNumber}`,
+      },
+    });
   } else {
-    return new Response("Something went wrong!");
+    return new Response("", {
+      status: 302,
+      headers: { Location: "/reservations/error" },
+    });
   }
 }
 
