@@ -45,3 +45,11 @@ export function validateData({
     typeof eventType === "string"
   );
 }
+
+export function convertDate(date: Date) {
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(date);
+}

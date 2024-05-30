@@ -1,5 +1,6 @@
 ---
 import "../../styles/pico/custom-pico.scss";
+import { convertDate } from "../../utils/clubhouseReservationForm";
 
 const params = Astro.url.searchParams;
 const reservationDate = params.get("reservationDate")!;
@@ -8,7 +9,12 @@ const reservationDate = params.get("reservationDate")!;
 <div>
   <p>
     Congrats! You've reserved the Clubhouse for {
-      new Date(parseInt(reservationDate))
+      convertDate(new Date(parseInt(reservationDate)))
     }!
   </p>
 </div>
+<style>
+  html {
+    background-color: #f9fafb;
+  }
+</style>
