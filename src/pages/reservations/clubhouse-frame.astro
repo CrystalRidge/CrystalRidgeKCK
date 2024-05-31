@@ -9,7 +9,8 @@ if (Astro.request.method === "POST") {
   const formData = await Astro.request.formData();
 
   const data = getData(formData);
-  const { reservationDate, emailAddress, phoneNumber } = data;
+  const { reservationDate, firstName, lastName, emailAddress, phoneNumber } =
+    data;
 
   if (validateData(data)) {
     try {
@@ -24,7 +25,7 @@ if (Astro.request.method === "POST") {
     return new Response("", {
       status: 302,
       headers: {
-        Location: `/reservations/success?reservationDate=${reservationDate.getTime()}&emailAddress=${emailAddress}&phoneNumber=${phoneNumber}`,
+        Location: `/reservations/success?reservationDate=${reservationDate.getTime()}&firstName=${firstName}&lastName=${lastName}&emailAddress=${emailAddress}&phoneNumber=${phoneNumber}`,
       },
     });
   } else {
@@ -44,11 +45,13 @@ const reservedDates = (
 
 <form class="flex flex-col gap-2 max-w-prose" id="reservation" method="POST">
   <DateInput reservedDates={reservedDates} client:only />
+  <TextInput client:only required name="first-name" label="First Name" />
+  <TextInput client:only required name="last-name" label="Last Name" />
   <TextInput client:only required name="email-address" label="Email Address" />
   <PhoneNumberInput client:only name="phone-number" />
   <TextInput client:only required name="address" label="Street Address" />
   <TextInput client:only required name="event-type" label="Event Type" />
-  <Textarea client:only name="description" label="Description" />
+  <Textarea client:only name="description" label="Description (Optional)" />
   <Button client:only type="submit" className="w-fit">Submit</Button>
 </form>
 <script>

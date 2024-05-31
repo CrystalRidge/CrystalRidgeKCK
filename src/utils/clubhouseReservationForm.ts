@@ -1,5 +1,7 @@
 export function getData(formData: FormData) {
   const reservationDate = new Date(formData.get("reservation-date") as string);
+  const firstName = formData.get("first-name") as string;
+  const lastName = formData.get("last-name") as string;
   const emailAddress = formData.get("email-address") as string;
   const phoneNumber = formData.get("phone-number") as string;
   const address = formData.get("address") as string;
@@ -7,6 +9,8 @@ export function getData(formData: FormData) {
   const description = formData.get("description") as string;
   return {
     reservationDate,
+    firstName,
+    lastName,
     emailAddress,
     phoneNumber,
     address,
@@ -17,12 +21,16 @@ export function getData(formData: FormData) {
 
 export function validateData({
   reservationDate,
+  firstName,
+  lastName,
   emailAddress,
   phoneNumber,
   address,
   eventType,
 }: {
   reservationDate: Date;
+  firstName: string;
+  lastName: string;
   emailAddress: string;
   phoneNumber: string;
   address: string;
@@ -31,6 +39,8 @@ export function validateData({
 }) {
   if (
     !reservationDate ||
+    !firstName ||
+    !lastName ||
     !emailAddress ||
     !phoneNumber ||
     !address ||
@@ -39,6 +49,8 @@ export function validateData({
     return false;
   return (
     !isNaN(reservationDate.valueOf()) &&
+    typeof firstName === "string" &&
+    typeof lastName === "string" &&
     typeof emailAddress === "string" &&
     typeof phoneNumber === "string" &&
     typeof address === "string" &&
