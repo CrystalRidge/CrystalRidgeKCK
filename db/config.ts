@@ -10,6 +10,7 @@ const ClubhouseReservations = defineTable({
     address: column.text({ optional: false }),
     eventType: column.text({ optional: false }),
     description: column.text({ optional: true }),
+    creationDate: column.date({ optional: false }),
   },
 });
 

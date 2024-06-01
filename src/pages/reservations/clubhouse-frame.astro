@@ -15,7 +15,9 @@ if (Astro.request.method === "POST") {
 
   if (validateData(data)) {
     try {
-      await db.insert(ClubhouseReservations).values(data);
+      await db
+        .insert(ClubhouseReservations)
+        .values({ ...data, creationDate: new Date() });
     } catch (error) {
       return new Response("", {
         status: 302,
