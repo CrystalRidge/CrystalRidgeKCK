@@ -7,6 +7,8 @@ export function getData(formData: FormData) {
   const address = formData.get("address") as string;
   const eventType = formData.get("event-type") as string;
   const description = formData.get("description") as string;
+  const termsAndConditions = formData.get("terms-and-conditions") as string;
+
   return {
     reservationDate,
     firstName,
@@ -16,6 +18,7 @@ export function getData(formData: FormData) {
     address,
     eventType,
     description,
+    termsAndConditions,
   };
 }
 
@@ -56,6 +59,7 @@ export function validateData({
   phoneNumber,
   address,
   eventType,
+  termsAndConditions,
 }: {
   reservationDate: Date;
   firstName: string;
@@ -65,7 +69,10 @@ export function validateData({
   address: string;
   eventType: string;
   description: string;
+  termsAndConditions: boolean;
 }) {
+  if (!termsAndConditions) return false;
+
   if (
     !reservationDate ||
     !firstName ||
