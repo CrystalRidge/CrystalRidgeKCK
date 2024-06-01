@@ -7,7 +7,7 @@ export function getData(formData: FormData) {
   const address = formData.get("address") as string;
   const eventType = formData.get("event-type") as string;
   const description = formData.get("description") as string;
-  const termsAndConditions = formData.get("terms-and-conditions") as string;
+  const termsAndConditions = Boolean(formData.get("terms-and-conditions"));
 
   return {
     reservationDate,
