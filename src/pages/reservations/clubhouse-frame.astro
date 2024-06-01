@@ -1,9 +1,10 @@
 ---
 import { db, ClubhouseReservations } from "astro:db";
-import { TextInput, Button, Textarea } from "@mantine/core";
+import { TextInput, Button, Textarea, Checkbox } from "@mantine/core";
 import { PhoneNumberInput } from "../../components/PhoneNumberInput";
 import { getData, validateData } from "../../utils/clubhouseReservationForm";
 import { DateInput } from "../../components/DateInput";
+import { TermsAndConditionCheckbox } from "../../components/TermsAndConditionsCheckbox";
 
 if (Astro.request.method === "POST") {
   const formData = await Astro.request.formData();
@@ -52,6 +53,7 @@ const reservedDates = (
   <TextInput client:only required name="address" label="Street Address" />
   <TextInput client:only required name="event-type" label="Event Type" />
   <Textarea client:only name="description" label="Description (optional)" />
+  <TermsAndConditionCheckbox client:only />
   <Button client:only type="submit" className="w-fit">Submit</Button>
 </form>
 <script>
