@@ -19,6 +19,35 @@ export function getData(formData: FormData) {
   };
 }
 
+export function isNotSpecialDate(date: Date) {
+  const specialDates = [
+    new Date(2024, 5, 8), // June 8th
+    new Date(2024, 6, 1), // July 1st
+    new Date(2024, 6, 2), // July 2nd
+    new Date(2024, 6, 3), // July 3rd
+    new Date(2024, 6, 4), // July 4th
+    new Date(2024, 6, 5), // July 5th
+    new Date(2024, 6, 11), // July 11th
+    new Date(2024, 7, 10), // August 10th
+    new Date(2024, 7, 17), // August 17th
+    new Date(2024, 8, 12), // September 12th
+    new Date(2024, 9, 12), // October 12th
+    new Date(2024, 9, 26), // October 26th
+    new Date(2024, 10, 14), // November 14th
+    new Date(2024, 11, 14), // December 14th
+    new Date(2024, 11, 21), // December 21st
+  ];
+
+  // Check if the given date is one of the special dates
+  for (let i = 0; i < specialDates.length; i++) {
+    if (date.getTime() === specialDates[i].getTime()) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 export function validateData({
   reservationDate,
   firstName,
@@ -47,15 +76,19 @@ export function validateData({
     !eventType
   )
     return false;
-  return (
-    !isNaN(reservationDate.valueOf()) &&
-    typeof firstName === "string" &&
-    typeof lastName === "string" &&
-    typeof emailAddress === "string" &&
-    typeof phoneNumber === "string" &&
-    typeof address === "string" &&
-    typeof eventType === "string"
-  );
+
+  if (
+    isNaN(reservationDate.valueOf()) ||
+    typeof firstName !== "string" ||
+    typeof lastName !== "string" ||
+    typeof emailAddress !== "string" ||
+    typeof phoneNumber !== "string" ||
+    typeof address !== "string" ||
+    typeof eventType !== "string"
+  )
+    return false;
+
+  return isNotSpecialDate(reservationDate);
 }
 
 export function convertDate(date: Date) {
