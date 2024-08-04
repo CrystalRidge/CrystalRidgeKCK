@@ -13,7 +13,7 @@ const items = [
     completed: true,
   },
   {
-    name: "Deeds for Clubhouse, Common Grounds & Streets be turned over to HOA",
+    name: "Deeds for Clubhouse, Common Grounds & Streets turned over to HOA",
     completed: true,
   },
   {
@@ -41,7 +41,7 @@ const items = [
     completed: false,
   },
   {
-    name: "Fixing railing on the exterior of the clubhouse to help with safety concerns",
+    name: "Fixing railing on the North East exterior of the clubhouse to help with safety concerns",
     completed: true,
   },
   {
@@ -49,7 +49,7 @@ const items = [
     completed: true,
   },
   {
-    name: "Repainting of the clubhouse",
+    name: "Repainting of the clubhouse upstairs interior",
     completed: true,
   },
   {
@@ -57,22 +57,151 @@ const items = [
     completed: true,
   },
   {
-    name: "Repainting and repairs to the upstairs of the clubhouse and new flooring (Board is planning on DIY on the interior to save money)",
+    name: "Repainting and repairs to the upstairs of the clubhouse. Fixes due to a lot of vandalism and stolen property",
     completed: true,
   },
   {
-    name: "Opening up the clubhouse upstairs for HOA Meetings, Community Meetings and allowing neighbors paying their HOA fees to use for private events such as a Birthday Party, Bridal Shower, etc. with a refundable deposit put down incase of damages.",
+    name: "Upstairs all new duct work installed due to Raccoons eating previous duct work and insulation",
     completed: true,
   },
   {
-    name: "Setting up snow removal for next year (Working with the City to see if they will take on maintenance of the roads after we perform fixes so they will do snow removal and future repairs and maintenance)",
+    name: "Two new Air Conditioning Condensers and lineset added due to previous ones being stolen",
+    completed: true,
+  },
+  {
+    name: "Dumpster installed and enclosed",
+    completed: true,
+  },
+  {
+    name: "Clubhouse pool fencing gaps all fixed",
+    completed: true,
+  },
+  {
+    name: "Clubhouse Exterior Trim peaks all repainted due to chipping paint",
+    completed: true,
+  },
+  {
+    name: "Basketball Court made and installed at the clubhouse",
+    completed: true,
+  },
+  {
+    name: "Opening up the clubhouse upstairs for HOA Meetings - Community Meetings",
+    completed: true,
+  },
+  {
+    name: "Setting up snow removal for roads and clubhouse parking lot",
+    completed: true,
+  },
+  {
+    name: "Held two summer BBQ Events",
+    completed: true,
+  },
+];
+const items2024 = [
+  {
+    name: "Replaced all interior Fire Exit Signs due to old ones not working/damaged",
+    completed: true,
+  },
+  {
+    name: "Painted over exterior clubhouse due to graffiti, also painted trim and doors",
+    completed: true,
+  },
+  {
+    name: "Purchase Fire Extinguishers and mounted in the clubhouse due to old ones missing",
+    completed: true,
+  },
+  {
+    name: "Exterior clubhouse lights wired to a timer",
+    completed: true,
+  },
+  {
+    name: "Attic Insulation was all redone due to Raccoons eating previous insulation. Also insulated attic wall open space. Also spray foam insulated gaps around columns.",
+    completed: true,
+  },
+  {
+    name: "Purchased a trash can and coffee maker for clubhouse for meetings and rentals",
+    completed: true,
+  },
+  {
+    name: "Clubhouse Railing replacement due to old rotting and unsafe",
+    completed: true,
+  },
+  {
+    name: "Finished rest of painting that was left do to upstairs",
+    completed: true,
+  },
+  {
+    name: "New carpet installed in clubhouse upstairs. Old carpet was ruined due to vandalism",
+    completed: false,
+  },
+  {
+    name: "More Trash pickup events scheduled and successful",
+    completed: true,
+  },
+  {
+    name: "Installed Dog Waste Stations and trash dumpsters around the neighborhood",
+    completed: true,
+  },
+  {
+    name: "Concrete pad poured for dumpster to sit on along with staining dumpster enclosure",
+    completed: true,
+  },
+  {
+    name: "Started painting and repairs of basement damage",
+    completed: true,
+  },
+  {
+    name: "Landscape cleanup of HOA grounds. Also re-landscaped front entrance sign",
+    completed: true,
+  },
+  {
+    name: "Roof replaced on clubhouse with Class 4 Shingles",
+    completed: true,
+  },
+  {
+    name: "Electrical fixed on front entrance sign",
+    completed: true,
+  },
+  {
+    name: "Clubhouse and front entrance sign sprinkler system turned back on and major repairs completed",
+    completed: true,
+  },
+  {
+    name: "Purchased more tables for clubhouse along with to be used when renting for private events",
+    completed: true,
+  },
+  {
+    name: "Installed Curtains for upstairs at the clubhouse. Also paper towel dispensers",
+    completed: true,
+  },
+  {
+    name: "Weed and Feed all clubhouse and front entrance sign grounds. Along with HOA Common areas",
+    completed: true,
+  },
+  {
+    name: "Installed smart lock on clubhouse for private rentals",
+    completed: true,
+  },
+  {
+    name: "Started putting no parking signs back up to get in fire marshall compliance",
+    completed: true,
+  },
+  {
+    name: "Pedestrian Cross Walks Installed",
+    completed: true,
+  },
+  {
+    name: "Clubhouse is being rented out for private parties/events",
+    completed: true,
+  },
+  {
+    name: "Clubhouse upstairs speakers repaired and bluetooth capability added",
     completed: true,
   },
 ];
 
 const futureIdeas = [
-  "Installing a basketball court with key card access for only neighborhood residents",
-  "Installing a playground with key card access for only neighborhood residents",
+  "Installing a playground",
   "Possibly filling the pool. In it’s place we’ve heard ideas such as a half court basketball area and a playground or a outdoor picnic area.",
   "Putting a recreation or workout room in the basement of the clubhouse with key card access so only neighborhood residents can use it.",
   "Making parking better and easier in the neighborhood. Getting back to fire marshal code with parking on one side of the road. Hoping with assistance from property owners additional off-street parking can be added.",
@@ -80,8 +209,23 @@ const futureIdeas = [
 ];
 ---
 
-<Layout title="Roadmap">
-  <h2 class="mb-6 text-2xl">Come lend a hand!</h2>
+<Layout title="Roadmap & Projects Completed">
+  <h2 class="mb-6 text-2xl">2024 Projects Completed</h2>
+  <div class="grid !grid-cols-[auto_1fr] gap-1">
+    {
+      items2024
+          .sort(({ completed: completed1 }, { completed: completed2 }) =>
+              completed1 === completed2 ? 0 : completed1 ? -1 : 1
+          )
+          .map(({ completed, name }) => (
+              <>
+                {completed ? <Checked /> : <Unchecked />}
+                {name}
+              </>
+          ))
+    }
+  </div>
+  <h2 class="mb-6 text-2xl">2023 Projects Completed</h2>
   <div class="grid !grid-cols-[auto_1fr] gap-1">
     {
       items
@@ -96,6 +240,7 @@ const futureIdeas = [
           ))
     }
   </div>
+
   <div>
     <h2 class="my-6 text-2xl">Ideas for future projects</h2>
     <ul class="pl-0">
