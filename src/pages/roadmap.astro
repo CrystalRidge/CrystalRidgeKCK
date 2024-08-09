@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Unchecked from "../components/UncheckedIcon.astro";
 import Checked from "../components/CheckedIcon.astro";
+import {Carousel} from "../components/Carousel";
 
 const items = [
   {
@@ -202,10 +203,11 @@ const items2024 = [
 
 const futureIdeas = [
   "Installing a playground",
+  "Creating a workout rec room in the clubhouse basement with KeyCard Access",
+  "Clearing land for pond access and stocking it. Along with walking trails around the neighborhood that connect to the pond trail.",
+  "Putting in a picnic area",
+  "Fixing or filling in the pool",
   "Possibly filling the pool. In it’s place we’ve heard ideas such as a half court basketball area and a playground or a outdoor picnic area.",
-  "Putting a recreation or workout room in the basement of the clubhouse with key card access so only neighborhood residents can use it.",
-  "Making parking better and easier in the neighborhood. Getting back to fire marshal code with parking on one side of the road. Hoping with assistance from property owners additional off-street parking can be added.",
-  "Putting in a walking trail around the neighborhood.",
 ];
 ---
 
@@ -247,6 +249,16 @@ const futureIdeas = [
       {futureIdeas.map((idea) => <li class="!text-sm list-inside">{idea}</li>)}
     </ul>
   </div>
+  <h2 class="mb-6 text-2xl text-center">Future Project Ideas Drawings</h2>
+  <Carousel
+      client:load
+      imageUrls={[
+        "/photos/possiblePlaygroundArea.png",
+        "/photos/possibleWorkoutRoom.png",
+        "/photos/possiblePoolChange.png",
+        "/photos/mutliUseArea.png",
+      ]}
+  />
   <div>
     <h2 class="my-6 text-2xl">Do you have ideas or feedback for us?</h2>
     <div class="mb-10">
