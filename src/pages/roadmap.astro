@@ -201,6 +201,55 @@ const items2024 = [
   },
 ];
 
+const items2025 = [
+  {
+    name: "130 Inch Projector Screen and Projector added to upstairs clubhouse",
+    completed: true,
+  },
+  {
+    name: "65 Inch TV Added to clubhouse upstairs.",
+    completed: true,
+  },
+  {
+    name: "Painted over exterior Lower clubhouse due to graffiti, also painted trim and doors",
+    completed: true,
+  },
+  {
+    name: "Front Island broken Curbing cutt back to reduce sharpness of curb. New curbing and concrete ",
+    completed: true,
+  },
+  {
+    name: "Clubhouse Sidewalk - Sunken/Broken area replaced & Sidewalk by mailboxes replaced and extended to add Parkview Ave Mailboxes",
+    completed: true,
+  },
+  {
+    name: "Basement Workout Room Completed and Basement Bathrooms remodeled and repaired. Access System installed on lower level",
+    completed: true,
+  },
+  {
+    name: "Front Island Upgrade completed, Electrical, irrigation, lights, shrubs, plants and Missouri River Rock added",
+    completed: true,
+  },
+  {
+    name: "Crack Sealing and Sealing the Parking lot of the clubhouse",
+    completed: false,
+  },
+  {
+    name: "Sealing all the clubhouse railing",
+    completed: false,
+  },
+  {
+    name: "Pressure Washing clubhouse",
+    completed: false,
+  },
+  {
+    name: "Moving mailboxes from Parkview Ave to N 103rd Terrace by other mailboxes",
+    completed: false,
+  },
+];
+
+
+
 const futureIdeas = [
   "Installing a playground",
   "Creating a workout rec room in the clubhouse basement with KeyCard Access",
@@ -212,10 +261,10 @@ const futureIdeas = [
 ---
 
 <Layout title="Roadmap & Projects Completed">
-  <h2 class="mb-6 text-2xl">2024 Projects Completed</h2>
+  <h2 class="mb-6 text-2xl">2025 Projects Completed</h2>
   <div class="grid !grid-cols-[auto_1fr] gap-1">
     {
-      items2024
+      items2025
           .sort(({ completed: completed1 }, { completed: completed2 }) =>
               completed1 === completed2 ? 0 : completed1 ? -1 : 1
           )
@@ -227,43 +276,57 @@ const futureIdeas = [
           ))
     }
   </div>
-  <h2 class="mb-6 text-2xl">2023 Projects Completed</h2>
-  <div class="grid !grid-cols-[auto_1fr] gap-1">
-    {
-      items
-          .sort(({ completed: completed1 }, { completed: completed2 }) =>
-              completed1 === completed2 ? 0 : completed1 ? -1 : 1
-          )
-          .map(({ completed, name }) => (
-              <>
-                {completed ? <Checked /> : <Unchecked />}
-                {name}
-              </>
-          ))
-    }
-  </div>
-
-  <div>
-    <h2 class="my-6 text-2xl">Ideas for future projects</h2>
-    <ul class="pl-0">
-      {futureIdeas.map((idea) => <li class="!text-sm list-inside">{idea}</li>)}
-    </ul>
-  </div>
-  <h2 class="mb-6 text-2xl text-center">Future Project Ideas Drawings</h2>
-  <Carousel
-      client:load
-      imageUrls={[
-        "/photos/possiblePlaygroundArea.png",
-        "/photos/possibleWorkoutRoom.png",
-        "/photos/possiblePoolChange.png",
-        "/photos/multiUseArea.png",
-      ]}
-  />
-  <div>
-    <h2 class="my-6 text-2xl">Do you have ideas or feedback for us?</h2>
-    <div class="mb-10">
-      Email us at
-      <a href="mailto:CrystalRidgeKCK@gmail.com">CrystalRidgeKCK@gmail.com</a>
+    <h2 class="mb-6 text-2xl">2024 Projects Completed</h2>
+    <div class="grid !grid-cols-[auto_1fr] gap-1">
+      {
+        items2024
+            .sort(({ completed: completed1 }, { completed: completed2 }) =>
+                completed1 === completed2 ? 0 : completed1 ? -1 : 1
+            )
+            .map(({ completed, name }) => (
+                <>
+                  {completed ? <Checked /> : <Unchecked />}
+                  {name}
+                </>
+            ))
+      }
     </div>
-  </div>
+    <h2 class="mb-6 text-2xl">2023 Projects Completed</h2>
+    <div class="grid !grid-cols-[auto_1fr] gap-1">
+      {
+        items
+            .sort(({ completed: completed1 }, { completed: completed2 }) =>
+                completed1 === completed2 ? 0 : completed1 ? -1 : 1
+            )
+            .map(({ completed, name }) => (
+                <>
+                  {completed ? <Checked /> : <Unchecked />}
+                  {name}
+                </>
+            ))
+      }
+    </div>
+
+    <div>
+      <h2 class="my-6 text-2xl">Ideas for future projects</h2>
+      <ul class="pl-0">
+        {futureIdeas.map((idea) => <li class="!text-sm list-inside">{idea}</li>)}
+      </ul>
+    </div>
+    <h2 class="mb-6 text-2xl text-center">Future Project Ideas Drawings</h2>
+    <Carousel
+        client:load
+        imageUrls={[
+          "/photos/possiblePlaygroundArea.png",
+          "/photos/possiblePoolChange.png",
+          "/photos/multiUseArea.png",
+        ]}
+    />
+    <div>
+      <h2 class="my-6 text-2xl">Do you have ideas or feedback for us?</h2>
+      <div class="mb-10">
+        Email us at
+        <a href="mailto:CrystalRidgeKCK@gmail.com">CrystalRidgeKCK@gmail.com</a>
+      </div>
+    </div>
 </Layout>
